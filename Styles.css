@@ -157,7 +157,7 @@ body {
 }
 #container img:hover{
     transition: .2s linear;
-    transform: scale(1.7) perspective(200px)rotateY(45deg);
+    transform: scale(1.5) perspective(200px)rotateY(45deg);
     padding-left: 5%; 
 }   
 @keyframes slide {
