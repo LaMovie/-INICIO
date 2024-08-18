@@ -12,6 +12,7 @@ a {
     background: transparent;
 }
 #buscador {
+    color: #fff;
     filter: hue-rotate(90deg);
     background: linear-gradient(to right, blue, red);
 }
