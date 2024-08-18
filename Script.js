@@ -30,16 +30,24 @@ function galleryImg() {
     Gif.addEventListener('click', function() {
         if(isNeon){
           Fondo();  
+      buscador.style.filter = 'none';
+  buscador.style.background = 'gold';
    } else {
           Neon();
+      buscador.style.filter = 'hue-rotate(90deg)';
+  buscador.style.background = 'linear-gradient(to right, blue, red)';
    }
         isNeon = !isNeon;
 });
     X.addEventListener('click', function() {
        if(isNeon){
           Fondo();  
+    buscador.style.filter = 'none';
+  buscador.style.background = 'gold';
    } else {
           Neon();
+    buscador.style.filter = 'hue-rotate(90deg)';
+   buscador.style.background = 'linear-gradient(to right, blue, red)';
    }
         isNeon = !isNeon;
 });
