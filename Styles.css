@@ -11,6 +11,10 @@ a {
     position: relative;
     background: transparent;
 }
+#buscador {
+    filter: hue-rotate(90deg);
+    background: linear-gradient(to right, blue, red);
+}
 @keyframes Back {
     0% {background: linear-gradient(to right, black, red, red, black);}
     25% {background: linear-gradient(to right, black, #f13, #f13, black);}
