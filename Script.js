@@ -30,29 +30,40 @@ function galleryImg() {
     Gif.addEventListener('click', function() {
         if(isNeon){
           Fondo();  
-      buscador.style.filter = 'none';
-  buscador.style.background = 'gold';
+        LookFondo();
    } else {
           Neon();
-      buscador.style.filter = 'hue-rotate(90deg)';
-  buscador.style.background = 'linear-gradient(to right, blue, red)';
+        LookNeon();
    }
         isNeon = !isNeon;
 });
     X.addEventListener('click', function() {
        if(isNeon){
           Fondo();  
-    buscador.style.filter = 'none';
-  buscador.style.background = 'gold';
+        LookFondo();
    } else {
           Neon();
-    buscador.style.filter = 'hue-rotate(90deg)';
-   buscador.style.background = 'linear-gradient(to right, blue, red)';
+        LookNeon();
    }
         isNeon = !isNeon;
 });
+
+       
+      function LookNeon(){
+           buscador.style.filter = 'hue-rotate(90deg)';
+   buscador.style.background = 'linear-gradient(to right, blue, red)';
+   buscador.style.color = '#fff';
+       }
+       
+       function LookFondo(){
+ buscador.style.filter = 'none';
+  buscador.style.background = 'gold';
+  buscador.style.color = '#000';
+       }
+
      Pre.addEventListener('click', function() {     
        Neon();
+     LookNeon();
 });
        let isNeon = true;
     
