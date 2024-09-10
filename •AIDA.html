@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor de Video</title>
+<style>
+body {
+    color: gold;
+    text-align: center;
+    background: #000;
+}
+#Video {
+    border-radius: 20px;
+    width: 360px; height: 240px;
+}
+button {
+    border-radius: 20px;
+    background: orange;
+    color: #000;
+}
+</style>
+</head>
+<body>
+        <h1>AIDA</h1>
+    <video id="Video" controls src="https://cdn4.lqsa.es/hls/3/stream.m3u8?cachebust=904b909f" type="video/mp4"></video><br/>
+    <button onclick="playVideo('https://cdn4.lqsa.es/hls/3/stream.m3u8?cachebust=904b909f')">🔗Enlace 1</button>
+    <button onclick="playVideo('https://cdn4.lqsa.es/hls/3/stream.m3u8')">🔗Enlace 2</button>
+
+<script>
+    function playVideo(videoUrl) {
+      Video.src = videoUrl;
+      Video.load();
+      Video.play();
+}    
+</script>
+</body>
+</html>
+
+<!-- https://cdn4.lqsa.es/index-video-only.html -->
+
+
+
+
+
+
+
+
+
