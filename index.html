@@ -1,258 +1,186 @@
 <!DOCTYPE html>
-<html>
+<html Lang="en">
 <head>
-     <meta charset="UTF-8"/>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-     <title>🍿 INICIO 🍿</title>
-    <link href="Styles.css" rel="stylesheet"/>     
-</head>
-<body>
-            <center>
-         <div id="Modal">
-     <div class="loader"></div>
-             </div>
-           </center>       
-      <div id="Aux"></div>  
-            
-   <div class="bounce-in-bck">   
-   <div class="Unic" id="color">
-
-<nav class="Unic" id="nav" onclick="playP()">
-			<ul>
-				<li><h3 id="Buscar" style="color:blue">🔍INICIO</h3></li>
-			
-				<li><a href="MENU.html">MENÚ</a></li>
-	
-	<li><a href="https://lamovie.github.io/TV-ONLINE-FREE/">TV</a></li>
-	 <li id="X"><h3>⚙️</h3></li>
-	
-						</ul>
-</nav><br><br><br>
-		
-		<div class="logo">		
-		    <div id="heading">
-		<a href="https://lamovievive.blogspot.com/?m=1"><img id="Hea" src="https://bit.ly/3RmINlu"/></a> 	          		     		  
-		  </div><br/><br/>
-		     <div id="Fix">
-		<iframe class="Unic" src="https://is.gd/7CaWXu" id="Main" style="width: 100%; aspect-ration: 16/9" frameborder="0" scrolling="true" allowfullscreen="true" allow="encrypted-media"></iframe>
-			     </div>
-	   	</div><br/>
-		
-        <div id="Pre" onclick="playSound()">
-        <div class="slider">
-        
-<div><a href="https://lamovie.github.io/PRE-ESTRENOS/"><img class="img" src="https://da.gd/JGmU1V"><h5 style="color: gold">PRE/ESTRENOS</h5></a></div>
-
-<div><img class="img" onclick='playVideo("https://drive.google.com/file/d/1DJLbYQdjGhw3rfhNxITsujKNiWrItzVO/preview")' src="https://da.gd/Ftjzhb"/><h5>LA TRAMPA</h5></div>
-
-<div><a href='https://lamovievive.blogspot.com/2024/09/agatha-en-todas-partes.html'><img src="https://da.gd/9dsfgX"/></a><h5>AGATHA</h5></div>
-
-<div><img class="img" onclick='playVideo("https://drive.google.com/file/d/1tByfyOr1-bEfUgbWARhcSVHBDyPx5P-j/preview")' src="https://da.gd/lw0qH"/><h5>SALEM'S LOT</h5></div>
-
-<div><img class="img" onclick='playVideo("https://drive.google.com/file/d/1KXDO89HmDOjYf7Zmw83G54qW6nIiNcUM/preview")' src="https://da.gd/LwF6"/><h5>PARPADEA DOS VECES</h5></div>
-
-<div><img class="img" onclick='playVideo("https://drive.google.com/file/d/1TC0MlmPnBVvddiRVL07IBiUeyRXebtqp/preview")' src="https://da.gd/dsjdor"/><h5>EL HOYO 2</h5></div>
-
-<div><img class="img" onclick='playVideo("https://drive.google.com/file/d/15Xxhy5gW39sWXJB65cyZYNFNxfCJHEGe/preview")' src="https://da.gd/hwLc2t"/><h5>THE KILLER</h5></div>
-
-<div><img class="img" onclick='playVideo("https://drive.google.com/file/d/1uouT0f5TZkIf1LlcUvb3tLZP-fY5YKwB/preview")' src="https://da.gd/RzLA8w"/><h5>JACKPOT</h5></div>
-
-<div><img class="img" onclick='playVideo("X-Tv.html")' src="https://da.gd/Qvqdaj"/><h5>❌ Tv</h5></div> 
-
-<a href="https://cdn4.lqsa.es/index-video-only.html"><img src="https://da.gd/R0SPFh" title="AIDA" id="I"/></a> 
-        
-<div><img class="img" onclick="playVideo('BASS-NATION.html')" src="https://da.gd/DktprV"/><h5>BASS NATION</h5></div>   
-
-<div><img class="img" onclick='playVideo("https://bit.ly/49D9ppk")' src="https://bit.ly/42K0hfB"/><h5>FLOW TV</h5></div>    
-
-<div><a href="https://lamovievive.blogspot.com/?m=1"><img class="img" onclick="playVideo('https://lamovievive.blogspot.com/?m=1')" src="https://da.gd/3sfMO"/></a><h5>✨ESTRENOS✨</h5></div>   
+    <meta charset="UFT-8"/>
+    <meta http-equiv="X-UA-Compatible" contect="IE=edge"/>
+    <meta name="viewport" contect="width=device-width,initial-scale=1.0"/>
     
-        </div>
-     </div>
-  </div>  
-</div><br/><br/><br/><br/>
+<style>
+body{
+    margin-top: 3rem;
+    background: #000;
+}
+.links{
+    display: flex;    
+    gap:5px;
+    align-items: stretch;  
+    justify-content: center;
+    scale: 100%;
+}
+.div{
+    list-style: none;
+    font-size: 20px;
+    background: black;
+    color: fuchsia;
+    width:70%;
+    height: 200px;
+    border: .5px solid gray;
+    border-radius: 20px;
+    text-align: center;   
+    overflow: scroll;
+    box-shadow: 0 0 20px fuchsia;
+}
+iframe{
+    box-shadow: 0 0 30px fuchsia;
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
+    background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEinuR3l58e9MiWP_hDFssCF5NqAMMhF-rPxTJychbQR8ViB2Y2msjtuYetE3Apf43IQe_mqNG5_8I-HKQbkf-GvRtenXE5fDLEH8kn0wmvBX7MBwtFIvHusDIsB14x1XdAYcay-AqPgXamUKOYE2JVKUEkO1if0bBhsYrpZL1qbpqw5UDhNubuehQzMgng/s498/image_downloader_1700646861820.gif);
+}
+#sum{
+    background: #600060;
+    color: #fff;
+    font-weight: bold;
+    padding: 5px;
+    border-radius:50px;
+    width:50%;
+    border: 2px solid #100040;
+}
+#M{
+    width:80%;   
+    float: right;
+}
+#B{
+    scale:170%;
+}
+#T{
+    display:flex;
+    gap:5px;     
+}
+#opaco{
+    opacity:0.5;
+    color: gray;
+}
+#fullscreenButton{
+    background:gray;
+    color:black;
+    opacity:0.5;
+    font-weight:bold;
+    font-size:15px;
+    padding:1px;
+    border-radius:50px;
+}
+</style>        
+        
+<style>
+li:hover{-webkit-animation:rotate-scale-up-ver .65s linear both;animation:rotate-scale-up-ver .65s linear both}
+/* ----------------------------------------------
+ * Generated by Animista on 2023-11-19 7:34:8
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
 
-  <h3 class="H3">🍿 PELIS 🍿</h3>
-              <br/>
-      <div id="container" onclick="playA()" class="bounce-in-bck">
+@-webkit-keyframes rotate-scale-up-ver{0%{-webkit-transform:scale(1) rotateY(0);transform:scale(1) rotateY(0)}50%{-webkit-transform:scale(2) rotateY(180deg);transform:scale(2) rotateY(180deg)}100%{-webkit-transform:scale(1) rotateY(360deg);transform:scale(1) rotateY(360deg)}}@keyframes rotate-scale-up-ver{0%{-webkit-transform:scale(1) rotateY(0);transform:scale(1) rotateY(0)}50%{-webkit-transform:scale(2) rotateY(180deg);transform:scale(2) rotateY(180deg)}100%{-webkit-transform:scale(1) rotateY(360deg);transform:scale(1) rotateY(360deg)}}
+</style>
+         
+</head>    
+<body>  
+             <center>
+                      
+ <details open>
+   <summary id="sum">DARK-PLAY</summary><br/>
  
-<a href="https://lamovievive.blogspot.com/p/body-background-black.html"><img class="N" src="https://da.gd/ruMzxV" alt="Título de película"><h4>📼COMBO DE LINKS CAIDOS📼</h4></a> 
+            <center>
+        <div>
+        
+ <iframe src="https://is.gd/7CaWXu" style="width:100%; aspect-ration:16/9" frameborder="0" allowfullscreen="true" allow="encrypted-media" scrolling="true" name="WILLOW"></iframe>
+ 
+     </div><br/>
+ 
+           <div class="links">   
 
-<a href="https://lamovievive.blogspot.com/2024/10/salems-lot-2024.html"><img class="N" src="https://da.gd/lw0qH" alt="Título de película"><h4>SALEM'S LOT </h4></a>
+        <div class="div"><br/>
+<b><li><a href="https://is.gd/7CaWXu" style="color: fuchsia; background-color: black" target="WILLOW">CLASSIC</a></li>       
+        
+        <li><a href="https://imagenuniversaltv.net:3771/live/iutvlive.m3u8" style="color: #4f9; background-color: black" target="WILLOW">UNIVERSAL</a></li>                                                                    
 
-<a href="https://lamovievive.blogspot.com/2024/09/the-killer-2024.html"><img class="N" src="https://da.gd/hwLc2t" alt="Título de película"><h4>THE KILLER</h4></a>
+<li><a href="https://stream.4fun.tv:8888/hls/4f.m3u8" style="color: fuchsia; background-color: black" target="WILLOW">4FUN TV</a></li> 
+         
+<li><a href="https://is.gd/AV8Q3O" style="color: #4f9; background-color: black" target="WILLOW">COMEDY CENTER</a></li>
 
-	<a href="https://lamovievive.blogspot.com/2024/07/deadpool-3-2024.html"	><img class="N" src="https://da.gd/3EfU"/><h4>DEADPOOL 3</h4></a>
-	
-	<a href="https://lamovievive.blogspot.com/2024/09/la-trampa-2024.html"><img class="N" src="https://da.gd/Ftjzhb" alt="Título de película"><h4>LA TRAMPA</h4></a>
-									
-<a href="https://lamovievive.blogspot.com/2024/09/late-night-with-devil-2024.html"><img class="N" src="https://da.gd/dnbnH" alt="Título de película"><h4>LATE NIGHT WITH THE DEVIL</h4></a>
-	
-	<a href="https://lamovievive.blogspot.com/2024/06/die-hart-1-2023.html"><img class="N" src="https://bit.ly/3y7OD38" alt="Título de serie"><h4>DIE HART 1</h4></a>
-						
+ <li><a href="https://is.gd/FLLYMV" style="color: fuchsia; background-color: black" target="WILLOW">VEVO R&B</a></li>  
 
-	<a href="https://lamovievive.blogspot.com/2024/06/die-hart-die-harter-2024.html"><img class="N" src="https://bit.ly/3LBP74A" alt="Título de serie"><h4>DIE HART 2</h4></a>
-				
-<a href="https://lamovievive.blogspot.com/2024/06/lift-2024.html"><img class="N" src="https://bit.ly/3Smf9g3" alt="Título de película"><h4>LIFT</h4></a>							
-			
-<a href="https://lamovievive.blogspot.com/2024/08/longlegs-el-coleccionista-de-almas-2024.html"><img class="N" src="https://da.gd/Lj5zg" alt="Título de serie"><h4>LONGLEGS</h4></a>
+<li><a href="https://is.gd/2nVBaq" style="color: #4f9; background-color: black" target="WILLOW">ANIMES TV</a></li>  
 
-<a href="https://lamovievive.blogspot.com/2024/05/el-primer-amen-2024.html"	><img class="N" src="https://bit.ly/3zPaOf8"/><h4>EL PRIMER AMÉN</h4></a>
+<li><a href="https://cdn.002radio.com:3909/live/radio002live.m3u8" style="color: fuchsia; background-color: black" target="WILLOW">02 Radio</a></li>                                            
 
-<a href="https://lamovievive.blogspot.com/2024/08/jackpot-2024.html"><img class="N" src="https://da.gd/RzLA8w" alt="Título de serie"><h4>JACKPOT</h4></a>
+<li><a href="https://is.gd/ZbUCIE" style="color: #4f9; background-color: black" target="WILLOW">ANIME CLASSIC</a></li>
+
+<li><a href="https://streamtv.mediasector.es/hls/activatv/index.m3u8" style="color: fuchsia; background-color: black" target="WILLOW">ACTIVA TV</a></li> 
+
+<li><a href="https://is.gd/O95aRO" style="color: #4f9; background-color: black" target="WILLOW">BOB ESPONJA</a></li>
+
+<li><a href="https://vivo.solumedia.com:19360/grupoemail/grupoemail.m3u8" style="color: fuchsia; background-color: black" target="WILLOW">CHILECITO TV</a></li> 
+
+<li><a href="https://is.gd/tit1cW" style="color: #4f9; background-color: black" target="WILLOW">SERIES TV</a></li>      
+
+<li><a href="https://is.gd/qONOfE" style="color: fuchsia; background-color: black" target="WILLOW">VEVO 90s</a></li>         
+
+<li><a href="https://is.gd/Y01en3" style="color: #4f9; background-color: black" target="WILLOW">TOONS</a></li>
       
-<a href="https://lamovievive.blogspot.com/2024/04/baghead-2023.html"><img class="N" src="https://bit.ly/3WekaZh" alt="Título de película"><h4>BAGHEAD</h4></a>
-      			
-<a href="https://lamovievive.blogspot.com/2024/04/abigail-2024.html"><img class="N" src="https://da.gd/ZjJdQU" alt="Título de película"><h4>ABIGAIL</h4></a>
-				
-				<a href="https://lamovievive.blogspot.com/2024/08/a-quiet-place-3-2024.html"><img class="N" src="https://da.gd/Ew2hVV" alt="Título de serie"><h4>A QUIET PLACE 3</h4></a>
+    
+         <br/>         
+        </div>
+  </details><br/><br/>  
+  
+            <center>
+        <button id="fullscreenButton">Pantalla Completa</button><br/><br/>
+  
+  <i id="opaco">Este servicio de canales gratuitos no necesita un modelo de suscripción, pero si contiene anuncios & publicidad. Usar navegador BRAVE</i><br/>
+  
+  <a href="https://play.google.com/store/apps/details?id=com.brave.browser" style="color: fuchsia; opacity: .7">NAVEGADOR 📛 BRAVE</a>
+    
+    <i id="opaco">"25 Canales Liberados"</i><br/><br/><br/><br/>
 
-<a href="https://lamovievive.blogspot.com/2024/05/atlas-2024.html"><img class="N" src="https://bit.ly/3Y91CfF" alt="Título de serie"><h4>ATLAS</h4></a>
+   <h2 id="opaco">°LA MOVIE PROPERTY°</h2>
+           </center>
+ 
+<script>
+const textos = [
+  "🔥 LA MOVIE...",
+  "...DE JOE...",
+  "...FREE TV🔥",
+ 
+];
 
-<a href="https://lamovievive.blogspot.com/2024/04/rebel-moon-2-2024.html"><img class="N" src="https://da.gd/Opae8" alt="Título de película"><h4>REBEL MOON 2</h4></a>
-				
-<a href="https://lamovievive.blogspot.com/2024/03/argylle-2024.html"><img class="N" src="https://da.gd/LXZ9Bp" alt="Título de película"><h4>ARGYLLE</h4></a>										
-		       		</div><br/><br/>
-		       						
-				
-			<h3 class="H3">🍿 SERIES 🍿</h3>
-				          <br/>
-	   			<div id="container" onclick="playB()" class="bounce-in-bck">
-			
-				<a href="https://lamovievive.blogspot.com/2024/09/agatha-en-todas-partes.html"><img class="M" src="https://da.gd/9dsfgX" alt="Título de película"><h4>AGATHA EN TODAS PARTES</h4></a>
-				
-				<a href="https://lamovievive.blogspot.com/2022/03/the-boys.html?m=1"><img class="M" src="https://da.gd/aFqLkg" alt="Título de película"><h4>THE BOYS</h4></a>
-				
-				<a href="https://lamovievive.blogspot.com/2024/06/citadel.html"><img class="M" src="https://da.gd/4W2D"	/><h4>CITADEL</h4></a>
-				
-				<a href="https://lamovievive.blogspot.com/2023/10/wanda-vision.html"><img class="M" src="https://da.gd/rNmLbh" alt="Título de serie"><h4>WANDA-VISION</h4></a>
-				
-				<a href="https://lamovievive.blogspot.com/2024/06/aang-last-airbender-2024.html"	><img class="M" src="https://bit.ly/4feldB5"/><h4>AVATAR 2024</h4></a>
-				
-				<a href="https://lamovievive.blogspot.com/2023/02/1899.html"><img class="M" src="https://da.gd/WUK4ra" alt="Título de película"><h4>1899</h4></a>
-				
-			 <a href="https://lamovievive.blogspot.com/2023/11/doom-patrol.html?m=1"><img class="M" src="https://da.gd/YNdxJH" alt="Título de película"><h4>DOOM PATROL</h4></a>
-			 
-				<a href="https://lamovievive.blogspot.com/p/stranger-things.html"><img class="M" src="https://da.gd/M8tpsh" alt="Título de película"><h4>STRANGER THINGS</h4></a>
-				
-				<a href="https://lamovievive.blogspot.com/p/the-umbrella-academy.html"><img class="M" src="https://da.gd/NegrG6" alt="Título de película"><h4>THE UMBRELLA ACADEMY</h4></a>
-				
-	<a href="https://lamovievive.blogspot.com/2024/06/penny-dreadful.html"><img class="M" src="https://da.gd/avkmR" alt="Título de película"><h4>PENNY DREADFUL</h4></a>
-	
-	<a href="https://lamovievive.blogspot.com/2024/05/feria.html"><img class="M" src="https://da.gd/T6x3" alt="Título de película"><h4>FERIA</h4></a>
-	
-	<a href="https://lamovievive.blogspot.com/2024/09/anillos-de-poder.html"><img class="M" src="https://da.gd/Xa0Fzw" alt="Título de película"><h4>KAOS</h4></a>						
-				    </div><br/><br/>
-				    
-			<h3 class="H3">🍿 ANIMES 🍿</h3>
-				         <br/>
-				<div id="container" onclick="playC()" class="bounce-in-bck">
+const divTextos = document.getElementById('sum');
+let index = 0;
 
-	  <a href="https://lamovievive.blogspot.com/p/futurama.html"><img class="A" src="https://da.gd/FrElSL" alt="Título de película"><h4>FUTURAMA</h4></a>
-	  
-	  
-				<a href="https://lamovievive.blogspot.com/2022/12/inside-job.html"><img class="A" src="https://da.gd/kQuEtQ" alt="Título de película"><h4>INSIDE JOB</h4></a>
-				
-				<a href="https://lamovievive.blogspot.com/2023/03/one-punch-man-temp-1.html"><img class="A" src="https://da.gd/pIasJ2" alt="Título de película"><h4>ONE PUNCH MAN</h4></a>
-				
-				<a href="https://lamovievive.blogspot.com/2023/11/invincible.html"><img class="A" src="https://da.gd/693i0X" alt="Título de serie"><h4>INVINCIBLE</h4></a>
-				
-				<a href="https://lamovievive.blogspot.com/2022/01/blog-post_65.html"><img class="A" src="https://da.gd/T43Sd" alt="Título de película"><h4>DESENCANTO</h4></a>
-				
-				<a href="https://lamovievive.blogspot.com/2023/09/mr-pickles.html"><img class="A" src="https://da.gd/JxCmHs" alt="Título de película"><h4>MR PICKLES</h4></a>
-				
-				<a href="https://lamovievive.blogspot.com/p/brickleberry.html"><img class="A" src="https://da.gd/yKQ4B" alt="Título de película"><h4>BRICKLEBERRY</h4></a>
-				
-				<a href="https://lamovievive.blogspot.com/2023/11/ataque-de-titanes.html"><img class="A" src="https://da.gd/sMysH" alt="Título de película"><h4>ATAQUE DE TITANES</h4></a>			
-				
-				<a href="https://drive.google.com/drive/folders/1mLG5v3dcDtIuQ5dPAp9B-DZxHn9f7LT4"><img class="A" src="https://da.gd/J6W0s1"	/><h4>BOYS DIABOLICAL</h4></a>
-				
-			<a href="https://lamovievive.blogspot.com/p/love-death-robots.html"><img class="A" src="https://da.gd/mTvqi9" alt="Título de película"><h4>LVDR</h4></a>
-			
-			<a href="https://lamovievive.blogspot.com/2022/12/rick.html"><img class="A" src="https://da.gd/3r9wX" alt="Título de película"><h4>RICK & MORTY</h4></a>
-			
-			<a href="https://lamovievive.blogspot.com/2022/09/baki.html"><img class="A" src="https://da.gd/6nxCvW" alt="Título de película"><h4>BAKI</h4></a>
-          </div><br/><br/>     
-          
- <h3 class="H3">🍿 OTROS 🍿</h3>   
-             
-  <div onscroll="galleryImg()" class="gallery">
-<div class="image-container" onclick="playA()">
+function cambiarTextoInfinito() {
+  divTextos.textContent = textos[index];
+  index = (index + 1) % textos.length;
+}
 
-        <a href="https://share.vidyard.com/watch/21tVzphSZMZwT3XYpvX29B?autoplay=1" target="WILLOW"><img class="image" src="https://da.gd/z23K"/></a>
+setInterval(cambiarTextoInfinito, 2000); // Cambia el texto cada 2 segundos
+</script>
 
-    <a href="https://share.vidyard.com/watch/FSh4kR7xfFgdJQbUUxpyK2?autoplay=1" target="WILLOW"><img class="image" src="https://da.gd/FSPEU"/></a>
+<script>
+var fullscreenButton = document.querySelector('#fullscreenButton');
+var iframe = document.querySelector('iframe');
 
-    <a href="https://share.vidyard.com/watch/4udGzvKKam99NtV2wJ32WM?autoplay=1" target="WILLOW"><img class="image" src="https://da.gd/y5rgp"/></a>
-
-    <a href="https://lamovievive.blogspot.com/2022/11/merlina.html" target="WILLOW"><img class="image" src="https://da.gd/7Jjxl"/></a>
-
-     <a href="https://lamovievive.blogspot.com/2022/11/marianne.html" target="WILLOW"><img class="image" src="https://da.gd/sNTgA1"/></a>
-
-         <a href="https://lamovievive.blogspot.com/2022/09/anillos-de-poder.html" target="WILLOW"><img class="image" src="https://da.gd/XnZLMb"/></a>
-
-     <a href="https://share.vidyard.com/watch/bYAwLKdDbC4Bn3BDC18HTG?autoplay=1" target="WILLOW"><img class="image" src="https://da.gd/UVvy9"/></a>
-
-    <a href="https://lamovievive.blogspot.com/2022/07/the-gray-man.html" target="WILLOW"><img class="image" src="https://da.gd/5hg4"/></a>
-
-     <a href="https://lamovievive.blogspot.com/2022/02/kings-man-3.html" target="WILLOW"><img class="image" src="https://da.gd/i6id"/></a>
-
-       <a href="https://share.vidyard.com/watch/ouCcw4X96YEeEszACaHhYQ?autoplay=1" target="WILLOW"><img class="image" src="https://da.gd/6Ci1K"/></a>
-
-       <a href="https://share.vidyard.com/watch/MXeWgc1HGUsg2BYNZtyxUj?autoplay=1" target="WILLOW"><img class="image" src="https://da.gd/Hts9wf"/></a>
-
-       <a href="https://lamovievive.blogspot.com/2023/01/m3gan.html" target="WILLOW"><img class="image" src="https://da.gd/ukULX"/></a>
-
-        <a href="https://lamovievive.blogspot.com/p/el-gabinete-de-las-curiosidades.html" target="WILLOW"><img class="image" src="https://da.gd/0MnTfN"/></a>
-
-       <a href="https://share.vidyard.com/watch/Vzk7ZZQ9iDZpPsPsBtFSjA?autoplay=1" target="WILLOW"><img class="image" src="https://da.gd/XNU2tY"/></a>
-
-        <a href="https://lamovievive.blogspot.com/2022/12/his-dark-materials.html" target="WILLOW"><img class="image" src="https://da.gd/rU21yP"/></a>             
-           </div>
-         </div>  
-<hr style="height:50px; border:0"/>	
-         <br/><br/><br/>                   
-          
-        <center><div id="Blue">
-          
-          <li> <a class="baa" href="http://expusofia.blogspot.com">🕎 BLOG DE TEOSOFIA 🕎</a></li><br />                  
-	                 
-	                 <li> <a class="baa" href="https://u.pcloud.link/publink/show?code=kZBQ210ZaUKV3gUoRDRVzv7HHVXwURXe0f17">🔥LA MOVIE LITE TV APP🔥</a></li><br/>                    
-	                  
-	                    <li><a class="baa" href="https://u.pcloud.link/publink/show?code=kZ2Q210ZDQe6ro3S8CSFNNX8VyttIpBYW57X">🍿LA MOVIE APK🍿</a></li><br />                   
-	                  
-	                 <li> <a class="baa" href="https://lamovievive.blogspot.com/p/cloud-music.html">☁️ CLOUD MUSIC ☁️</a></li><br />                             
-	                  
-	                 <li> <a class="baa" href="https://drive.google.com/drive/folders/1EPT6hXn2l69bqh3cH6OOsrWVB0vULw22">📱 APPS 📱</a></li><br />                  
-                  
-	                    <li><a class="baa" href="https://lamovievive.blogspot.com/2022/12/blog-post.html">📺 MY TV ONLINE 📺</a></li><br/>
-	                    
-<li><a id="Wa" class="baa" href="https://lamovievive.blogspot.com/p/sugerencias.html">👉🏾 SUGERENCIAS 👈🏾</a></li>  
-	                    
-	        </div> <br/>    
-	        
-	              <center>
-	     <img id="Gif" src="https://da.gd/6eFwqp"/>
-          
-<hr style="height:50px; border:0"/>                     
-   
-<footer>
-	    	<p>© LA MOVIE DE JOE•</p>
-</footer>   
-
-<audio autoplay>
-  <source src="https://ia600404.us.archive.org/19/items/efecto-maquina/Efecto%20%28M%C3%A1quina%29.mp3" type="audio/mpeg">
-</audio>         
-          </div>
- <script src="Script.js"></script> 
- <script src="Buscador.js"></script>    
+fullscreenButton.addEventListener('click', function() {
+  if (iframe.requestFullscreen) {
+    iframe.requestFullscreen();
+  } else if (iframe.mozRequestFullScreen) { // Firefox
+    iframe.mozRequestFullScreen();
+  } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
+    iframe.webkitRequestFullscreen();
+  } else if (iframe.msRequestFullscreen) { // IE/Edge
+    iframe.msRequestFullscreen();
+  }
+});
+</script> 
 </body>
-</html>
-
-     
-
-
-
-
-
-
+</html> 
+       
