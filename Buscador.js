@@ -82,7 +82,7 @@ a {
 #No {
     scale: 80%;
     display: none;
-    
+    position: fixed:
 }
 </style>
 
