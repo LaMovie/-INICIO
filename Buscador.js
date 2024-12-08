@@ -687,9 +687,11 @@ h1 {
  
  if (TextPre.includes('tv')) {
          Prefijo = '📺';
+     } else if(TextPre.includes('sofia')){
+         Prefijo = '⚙️';
      } else {
          Prefijo = '🍿';
-     }    
+ }
    var Texto = Prefijo + TextPre;       
    buscador.value = Texto; 
   }
