@@ -115,7 +115,7 @@ h1 {
         <input type="text" name="buscador" id="buscador" placeholder="Buscar...">
            <br/><br/>
          <ul id="Lista">
-  <li><a href="https://lamovievive.blogspot.com/p/aida_15.html?m=1" class="Data">📺Aida Tv</a></li>
+  <li><a href="https://lamovie.github.io/AIDA-TV/" class="Data">📺Aida Tv</a></li>
   <li><a href="https://lamovie.github.io/IPTV/" class="Data">📺IPTV</a></li>
   <li><a href="https://bit.ly/3vueUqF" class="Data">📺Flow Tv</a></li>
   <li><a href="https://bit.ly/3unJf9W" class="Data">📺Ritmos Tv</a></li>
