@@ -210,15 +210,3 @@ window.addEventListener("resize", Handle);
    }
 });
 
-     function mostrarHora(){
- var Hora = new Date().getHours(); 
-   if (Hora >= 7 && Hora < 19){
-       Fondo();
-   } else {
-       Neon();
-   }
-};
-         mostrarHora();
-
-
-
