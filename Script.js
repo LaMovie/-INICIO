@@ -213,7 +213,7 @@ window.addEventListener("resize", Handle);
 function mostrarHora() {
  var Hora = new Date().getHours();
 
-   if (Hora >= 7 && Hora < 19) {
+   if (Hora >= 7 && Hora < 20) {
         Fondo();
             } else {
         Neon();
