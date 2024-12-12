@@ -215,11 +215,9 @@ function mostrarHora() {
  var Hora = new Date().getHours();
 
    if (Hora >= 7 && Hora < 20) {
-        Neon();
-     LookNeon();
+        Fondo();
             } else {
-        Fondo();  
-        LookFondo();
+        Neon(); 
   }
 };
         mostrarHora();
