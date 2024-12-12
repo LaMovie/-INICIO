@@ -1,4 +1,5 @@
-    function playVideo(videoUrl) {
+
+function playVideo(videoUrl) {
       var videoPlayer = document.getElementById('Main');
       videoPlayer.src = videoUrl;
       videoPlayer.load();
@@ -215,8 +216,10 @@ function mostrarHora() {
 
    if (Hora >= 7 && Hora < 20) {
         Neon();
+     LookNeon();
             } else {
-        Fondo();
+        Fondo();  
+        LookFondo();
   }
 };
         mostrarHora();
