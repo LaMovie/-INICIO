@@ -226,7 +226,7 @@ function mostrarHora() {
                  
 window.onload = function() {
        if (!/Mobi|Android/i.test(navigator.userAgent)) {
-   window.location.href = 'lamovievive.blogspot.com';
+   window.location = 'lamovievive.blogspot.com';
   }
 };    
 
