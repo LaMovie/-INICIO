@@ -222,5 +222,17 @@ function mostrarHora() {
 };
         mostrarHora();
 
+           <!-- PC -->
+                 
+window.onload = function() {
+       if (!/Mobi|Android/i.test(navigator.userAgent)) {
+   window.location.href = 'lamovievive.blogspot.com';
+  }
+};    
+
+
+
+
+
 
 
