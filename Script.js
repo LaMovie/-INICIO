@@ -1,3 +1,8 @@
+window.onload = function() {
+       if (!/Mobi|Android/i.test(navigator.userAgent)) {
+         PC.click();
+  }
+};    
 
 function playVideo(videoUrl) {
       var videoPlayer = document.getElementById('Main');
@@ -221,14 +226,6 @@ function mostrarHora() {
   }
 };
         mostrarHora();
-
-           <!-- PC -->
-                 
-window.onload = function() {
-       if (!/Mobi|Android/i.test(navigator.userAgent)) {
-   PC.click();
-  }
-};    
 
 
 
