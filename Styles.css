@@ -12,9 +12,9 @@ a {
     background: transparent;
 }
 #buscador {
-    color: #fff;
-    filter: hue-rotate(90deg);
-    background: linear-gradient(to right, blue, red);
+    color: #000;
+    filter: none;
+    background: gold;
 }
 @keyframes Back {
     0% {background: linear-gradient(to right, black, red, red, black);}
