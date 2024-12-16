@@ -15,6 +15,7 @@ a {
     color: #000;
     filter: none;
     background: gold;
+    font-weight: bold;
 }
 @keyframes Back {
     0% {background: linear-gradient(to right, black, red, red, black);}
