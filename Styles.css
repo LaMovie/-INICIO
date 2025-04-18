@@ -50,6 +50,12 @@ a {
     border: 2px solid blue;
     box-shadow: 0 0 30px blue;
 }
+.L {
+    animation: Space;
+    animation-timeline: view();
+    border: 2px solid orange;
+    box-shadow: 0 0 30px gold;
+}
 h5 {
     color: gold;
     width: 50%;
@@ -259,7 +265,7 @@ footer{
 	color: #fff;
 	text-align: center;
 } 
-#color {
+#color{
     background: url(https://da.gd/TMlSgU);
     background-size: cover;
     width: 100%;
