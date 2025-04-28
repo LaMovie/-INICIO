@@ -1,5 +1,5 @@
 
-function playVideo(videoUrl) {
+    function playVideo(videoUrl) {
       var videoPlayer = document.getElementById('Main');
       videoPlayer.src = videoUrl;
       videoPlayer.load();
@@ -211,20 +211,34 @@ window.addEventListener("resize", Handle);
    }
 });
 
-function mostrarHora() {
+     function mostrarHora() {
  var Hora = new Date().getHours();
 
    if (Hora >= 7 && Hora < 20) {
         Fondo();
             } else {
-        Neon(); 
+        Neon();
   }
 };
         mostrarHora();
+ 
+<!-- Detectar cuando entra o sale de fullscreen -->
+document.addEventListener('fullscreenchange', function() {
+  if (document.fullscreenElement) {
+    <!-- Si estamos en pantalla completa, bloquear orientación horizontal -->
+    if (screen.orientation && screen.orientation.lock) {
+      screen.orientation.lock('landscape');
+    }
+  } else {
+    <!-- Si salimos de pantalla completa, volver a orientación vertical -->
+    if (screen.orientation && screen.orientation.lock) {
+      screen.orientation.lock('portrait');
+    }
+  }
+});                  
 
-
-
-
+     
+     
 
 
 
