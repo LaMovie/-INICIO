@@ -1,8 +1,9 @@
 document.addEventListener("keyup", e=>{
  
-      var Input = e.target.value.toLowerCase().trim();
+      var In = e.target.value.toLowerCase().trim();
       var Data = document.querySelectorAll(".Data");
       let foundMatch = false;
+      var Input = Tildes(In.replace(/\s+/g, ' '));
  
   if (e.target.matches("#buscador")){          
    
@@ -22,7 +23,8 @@ document.addEventListener("keyup", e=>{
      <!-- Manejo del Enter -->
   
     if (e.key === "Enter") {
-      var inputValue = e.target.value.toLowerCase().trim();
+      var Int = e.target.value.toLowerCase().trim();
+      var inputValue = Tildes(Int.replace(/\s+/g, ' '));
       var matchedItem = [...document.querySelectorAll(".Data")].find(
         item => item.textContent.toLowerCase() === inputValue
       );
