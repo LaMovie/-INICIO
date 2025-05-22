@@ -279,26 +279,27 @@ footer{
     display: flex;
 }
 .gallery {
-    width: 95%;
+    width: 105%;
     height: auto;
     overflow-x: scroll;
-    display: flex;
-    gap: 5px;
-    padding: 10px;
-    background: #000;
+    white-space: nowrap;
+    scale: 70%;
+    gap: 1px;
+    padding: 5px;
+    background: url(https://bit.ly/3RnbSgA);
     border: 2px solid black;
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: 0 0 30px black;
     position: relative;
+    left: 0%;
     top: 30px;
-    scroll-behavior: smooth;
+    background: #000;
 }
 .image {
-    flex: 0 0 auto; /* Mantiene su tamaño sin encoger ni crecer */
-    width: 120px;
+    width: 140px;
     height: 100px;
     background: orange;
-    margin: 0 10px;
+    margin: 0 30px;
     transition: transform 0.3s;
     border-radius: 6px;
     border: 2px solid black;
@@ -342,7 +343,7 @@ footer{
     box-sizing: border-box;    
 }
 
-@property --bg-angle{inherits:false;initial-value:0deg;syntax:"<angle>"}@keyframes spin{to{--bg-angle:360deg}}#Main{border-radius:1rem;box-shadow:.125rem .25rem .25rem .5rem oklch(.1 .37 315/.25);width:min(400px,90vw);animation:spin 2.5s infinite linear paused;background:url(https://bit.ly/47cj9VX) padding-box,conic-gradient(from var(--bg-angle) in oklch longer hue,oklch(6 3 0) 0 0) border-box;border:6px solid transparent;animation-play-state:running}*{box-sizing:border-box};
+@property --bg-angle{inherits:false;initial-value:0deg;syntax:"<angle>"}@keyframes spin{to{--bg-angle:360deg}}#Main{border-radius:1rem;box-shadow:.125rem .25rem .25rem .5rem oklch(.1 .37 315/.25);width:min(400px,90vw);animation:spin 2.5s infinite linear paused;background:url(https://bit.ly/47cj9VX) padding-box,conic-gradient(from var(--bg-angle) in oklch longer hue,oklch(6 3 0) 0 0) border-box;border:6px solid transparent;animation-play-state:running}*{box-sizing:border-box}
 
 
 .slider {
