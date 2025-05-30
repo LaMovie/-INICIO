@@ -42,7 +42,29 @@ document.addEventListener("keyup", e => {
     );
 
     if (matchedItem) {
-      window.location.href = matchedItem.href;
+      var ENLACE = matchedItem.getAttribute("href");
+      if (ENLACE.includes('file')) {
+   var URL = ENLACE.split('view?usp')[0]; // Obtiene parte anterior a 'view?usp=drive'
+        var PRE = 'preview';
+     Main.src = URL + PRE;
+        buscador.value = '';          
+    Lista.style.display = 'none';
+    buscador.placeholder = inputValue;
+buscador.classList.add('PlaceHolder'); 
+         audio.pause();
+Main.style.background = 'black';
+          } else if (CANALES.some(item => ENLACE.includes(item))) {
+     Main.src = ENLACE; 
+       buscador.value = '';          
+    Lista.style.display = 'none';
+    buscador.placeholder = inputValue;  
+buscador.classList.add('PlaceHolder');     
+        audio.pause();
+Main.style.background = 'black';
+           } else {
+    window.location.href = matchedItem.href;
+         audio.pause();
+      }
     } else {
       buscador.value = '';
       Lista.style.display = 'none';
@@ -50,6 +72,8 @@ document.addEventListener("keyup", e => {
     }
   }
 });
+
+  var CANALES = ['.m3u8', 'bit.ly', 'stream', 'is.gd'];  
 
          <!-- HTML -->
          
@@ -219,7 +243,39 @@ h1 {
 });    
        No.alt = 'No EnCoNTraDO';
       No.style.color = '#fff';   
-
+      
+      
+        <!-- CLICK -->
+   Lista.addEventListener('click', (event) => {
+ if (event.target.tagName === 'A') {
+    event.preventDefault(); 
+  var ENLACE = event.target.href;
+  
+  if (ENLACE.includes('file')) {
+  var URL = ENLACE.split('view?usp')[0];
+       var PRE = 'preview';
+     Main.src = URL + PRE; 
+     buscador.value = '';          
+    Lista.style.display = 'none';
+    buscador.placeholder = event.target.textContent;
+buscador.classList.add('PlaceHolder');
+          audio.pause();
+Main.style.background = 'black';
+            } else if (CANALES.some(item => ENLACE.includes(item))) {
+       Main.src = ENLACE; 
+       buscador.value = '';          
+    Lista.style.display = 'none';
+    buscador.placeholder = event.target.textContent;  
+buscador.classList.add('PlaceHolder');     
+          audio.pause();
+Main.style.background = 'black';
+            } else {
+   window.location.href = ENLACE;
+          audio.pause();
+    } 
+  }
+});   
+     
 
      
        function Handle() {
@@ -266,7 +322,20 @@ h1 {
 };    
          
      
-     
+  <!-- Detectar cuando entra o sale de fullscreen -->
+document.addEventListener('fullscreenchange', function() {
+  if (document.fullscreenElement) {
+    <!-- Si estamos en pantalla completa, bloquear orientación horizontal -->
+    if (screen.orientation && screen.orientation.lock) {
+      screen.orientation.lock('landscape');
+    }
+  } else {
+    <!-- Si salimos de pantalla completa, volver a orientación vertical -->
+    if (screen.orientation && screen.orientation.lock) {
+      screen.orientation.lock('portrait');
+    }
+  }
+});     
      
      
      
