@@ -39,6 +39,8 @@ function galleryImg() {
         isNeon = !isNeon;
 });
     X.addEventListener('click', function() {
+     isNeon = !isNeon;
+     
        if(isNeon){
           Fondo();  
         LookFondo();
@@ -46,9 +48,8 @@ function galleryImg() {
           Neon();
         LookNeon();
    }
-        isNeon = !isNeon;
 });
-
+ 
        
       function LookNeon(){
            buscador.style.filter = 'hue-rotate(90deg)';
@@ -221,6 +222,8 @@ window.addEventListener("resize", Handle);
   }
 };
         mostrarHora();
+        
+        
  
 <!-- Detectar cuando entra o sale de fullscreen -->
 document.addEventListener('fullscreenchange', function() {
