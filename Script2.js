@@ -73,7 +73,7 @@ Main.style.background = 'black';
   }
 });
 
-  var CANALES = ['.m3u8', 'bit.ly', 'stream', 'is.gd', 'lamovie'];  
+  var CANALES = ['.m3u8', 'bit.ly', 'stream', 'is.gd', 'lamovie.link'];  
 
          <!-- HTML -->
          
