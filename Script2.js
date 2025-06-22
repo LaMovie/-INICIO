@@ -66,12 +66,19 @@ Main.style.background = 'black';
          audio.pause();
       }
     } else {
-      buscador.value = '';
+           Check();
       Lista.style.display = 'none';
       No.style.display = "none";
     }
   }
 });
+
+
+      function Check() {
+       window.location.href = 'https://h5.swplayer.com/es/search?keyword=' + buscador.value;
+       buscador.value = '';
+  };
+
 
   var CANALES = ['.m3u8', 'bit.ly', 'stream', 'is.gd', 'lamovie.link'];  
 
@@ -129,9 +136,14 @@ a {
  }
 }
 #No {
-    scale: 80%;
+    scale: 70%;
     display: none;
-    position: fixed;
+    margin: 4vh -4vh;
+    position: fixed; 
+    border-radius: 50px;
+  &:hover {
+      filter: hue-rotate(90deg);
+  }
 }
 </style>
 
@@ -155,7 +167,7 @@ h1 {
      <ul id="Lista"></ul>
            </div>
 </section>
-<img id="No" src="https://bit.ly/3y2BVCO"/>
+<img id="No" src="https://is.gd/NjNew4"/>
 `;
 
      Aux.innerHTML = HTML;
@@ -177,8 +189,13 @@ h1 {
    buscador.value = Texto; 
   }
 });    
+
        No.alt = 'No EnCoNTraDO';
       No.style.color = '#fff';   
+      
+      No.onclick = () => {
+         Check();
+     };
       
       
         <!-- CLICK -->
@@ -277,5 +294,5 @@ document.write(unescape("%3Cscript%20src%3D%22https%3A%2F%2Flamovie.github.io%2F
 
 
 
-     
+    // https://bit.ly/3y2BVCO    
      
