@@ -240,6 +240,19 @@ document.addEventListener('fullscreenchange', function() {
   }
 });                  
 
+
+         <!-- ONFILOM -->
+  var TOTAL = document.querySelector('.gallery');
+        
+ TOTAL.onclick = (event) => {
+ if (event.target.tagName === 'IMG') {
+    var NAMER = event.target.alt;
+       window.location.href = "https://h5.onfilom.com/es/search?keyword=" + NAMER;
+  }
+};
+
+
+
      
      
 
