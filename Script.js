@@ -241,15 +241,23 @@ document.addEventListener('fullscreenchange', function() {
 });                  
 
 
-         <!-- ONFILOM -->
-   TOTAL.onclick = (event) => {
- if (event.target.tagName === 'IMG') {
-    var NAMER = event.target.alt;
-       window.location.href = "https://h5.onfilom.com/es/search?keyword=" + NAMER;
-  }
+       <!-- ONFILOM -->
+                  
+     var TOTAL = document.querySelector('.gallery');
+
+  TOTAL.onclick = (event) => {
+var URL = event.target.closest('a');
+var ALT = event.target.alt; 
+// Busca el <a> más cercano
+
+    if (URL) {
+ // Si se hizo clic en un <a> (o su contenido, como la imagen)
+  window.location.href = URL.href;
+    } else if (ALT) {
+ // Si el elemento tiene atributo alt (la imagen sin <a>)
+   window.location.href = 'https://h5.onfilom.com/es/search?keyword=' + ALT;
+    }
 };
-
-
 
      
      
