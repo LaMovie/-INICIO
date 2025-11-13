@@ -255,7 +255,7 @@ var ALT = event.target.alt;
   window.location.href = URL.href;
     } else if (ALT) {
  // Si el elemento tiene atributo alt (la imagen sin <a>)
-   window.location.href = 'https://h5.onfilom.com/es/search?keyword=' + ALT;
+   window.location.href = 'https://latino.solo-latino.com/es/search?keyword=' + ALT;
     }
 };
 
