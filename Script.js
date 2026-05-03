@@ -210,6 +210,7 @@ window.addEventListener("resize", Handle);
    } else {
      Aux.style.display = 'block';
    }
+   buscador.focus();
 });
 
      function mostrarHora() {
