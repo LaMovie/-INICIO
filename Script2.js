@@ -43,17 +43,7 @@ document.addEventListener("keyup", e => {
 
     if (matchedItem) {
       var ENLACE = matchedItem.getAttribute("href");
-      if (ENLACE.includes('file')) {
-   var URL = ENLACE.split('view?usp')[0]; // Obtiene parte anterior a 'view?usp=drive'
-        var PRE = 'preview';
-     Main.src = URL + PRE;
-        buscador.value = '';          
-    Lista.style.display = 'none';
-    buscador.placeholder = inputValue;
-buscador.classList.add('PlaceHolder'); 
-         audio.pause();
-Main.style.background = 'black';
-          } else if (CANALES.some(item => ENLACE.includes(item))) {
+       if (CANALES.some(item => ENLACE.includes(item))) {
      Main.src = ENLACE; 
        buscador.value = '';          
     Lista.style.display = 'none';
@@ -63,6 +53,7 @@ buscador.classList.add('PlaceHolder');
 Main.style.background = 'black';
            } else {
     window.location.href = matchedItem.href;
+    buscador.value = '';
          audio.pause();
       }
     } else {
@@ -199,22 +190,12 @@ h1 {
       
       
         <!-- CLICK -->
-   Lista.addEventListener('click', (event) => {
+   Lista.onclick = (event) => {
  if (event.target.tagName === 'A') {
     event.preventDefault(); 
   var ENLACE = event.target.href;
   
-  if (ENLACE.includes('file')) {
-  var URL = ENLACE.split('view?usp')[0];
-       var PRE = 'preview';
-     Main.src = URL + PRE; 
-     buscador.value = '';          
-    Lista.style.display = 'none';
-    buscador.placeholder = event.target.textContent;
-buscador.classList.add('PlaceHolder');
-          audio.pause();
-Main.style.background = 'black';
-            } else if (CANALES.some(item => ENLACE.includes(item))) {
+  if (CANALES.some(item => ENLACE.includes(item))) {
        Main.src = ENLACE; 
        buscador.value = '';          
     Lista.style.display = 'none';
@@ -224,10 +205,11 @@ buscador.classList.add('PlaceHolder');
 Main.style.background = 'black';
             } else {
    window.location.href = ENLACE;
+      buscador.value = '';
           audio.pause();
     } 
   }
-});   
+};   
      
 
      
