@@ -66,7 +66,7 @@ Main.style.background = 'black';
 
 
       function Check() {
-       window.location.href = 'https://latino.solo-latino.com/es/search?keyword=' + buscador.value;
+       window.location.href = 'go:SET';
        buscador.value = '';
   };
 
