@@ -66,7 +66,7 @@ Main.style.background = 'black';
 
 
       function Check() {
-       window.location.href = 'go:SET';
+       window.location.href = 'go:GOOGLE';
        buscador.value = '';
   };
 
