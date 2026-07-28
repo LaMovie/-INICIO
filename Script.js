@@ -39,7 +39,8 @@ function galleryImg() {
         isNeon = !isNeon;
 });
 
-    X.addEventListener('click', function() {     
+    X.addEventListener('click', function() {
+     
      
        if(isNeon){
           Fondo();  
@@ -88,7 +89,7 @@ function galleryImg() {
   e.preventDefault();
   e.stopPropagation();
 
-  // 4. Retenemos todo por 2 segundos (2000 milisegundos) para apreciar la animación
+  // 4. Retenemos todo por 2 segundos (1000 milisegundo) para apreciar la animación
   setTimeout(() => {
     if (target.hasAttribute('onclick')) {
       // Si el elemento tenía un onclick en el HTML (ej: openMovie), extraemos su código y lo ejecutamos
@@ -253,9 +254,13 @@ window.addEventListener("resize", Handle);
  var Hora = new Date().getHours();
 
    if (Hora >= 7 && Hora < 20) {
-        Neon();
+        Fondo();
+      isNeon = false;
+      
             } else {
+       
         Neon();
+      isNeon = true;
   }
 };
         mostrarHora();
