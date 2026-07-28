@@ -66,9 +66,18 @@ Main.style.background = 'black';
 
 
       function Check() {
-       window.location.href = 'go:GOOGLE';
+       window.location.href = 'https://latino.solo-latino.com/es/search?keyword=' + buscador.value;
        buscador.value = '';
   };
+
+
+
+function openMovie(titulo, urlArchivo) {
+  const urlDestino = `https://lamovie.github.io/La-Movie-Delux/PLAY2.html?titulo=${encodeURIComponent(titulo)}&url=${encodeURIComponent(urlArchivo)}`;
+   
+  window.location.href = urlDestino;
+}
+
 
 
   var CANALES = ['.m3u8', 'bit.ly', 'stream', 'is.gd', 'lamovie.link'];  
