@@ -52,7 +52,7 @@ function galleryImg() {
  
        
       function LookNeon(){
-           buscador.style.filter = 'hue-rotate(90deg)';
+   // buscador.style.filter = 'hue-rotate(90deg)';
    buscador.style.background = 'linear-gradient(to right, blue, red)';
    buscador.style.color = '#fff';
    No.style.color = '#fff';
@@ -217,7 +217,7 @@ window.addEventListener("resize", Handle);
  var Hora = new Date().getHours();
 
    if (Hora >= 7 && Hora < 20) {
-        Fondo();
+        Neon();
             } else {
         Neon();
   }

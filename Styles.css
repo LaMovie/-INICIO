@@ -1,6 +1,31 @@
+  :root {
+      color-scheme: dark; /* Fuerza al motor del navegador a usar base oscura */
+  }
+  
+  html, body {
+      background-color: #000000 !important;
+  }
+
+  /* Si el reproductor/iframe es el que destella en blanco al cargar: */
+  iframe, #Main, video {
+      background-color: #000000 !important;
+      color-scheme: dark;
+}
+* {
+    box-sizing: border-box;    
+}
+
+body {
+    transition: 1s ease;
+    font-size: 15px;
+    background: #000;
+    overflow-x: hidden; /* Evita que la pantalla baile hacia los lados */
+}     
+
 a {
     text-decoration: none;
 }
+
 #Aux {
     top: 0vh;
     left: 0vh;
@@ -11,12 +36,8 @@ a {
     position: relative;
     background: transparent;
 }
-#buscador {
-    color: #000;
-    filter: none;
-    background: gold;
-    font-weight: bold;
-}
+
+
 @keyframes Back {
     0% {background: linear-gradient(to right, black, red, red, black);}
     25% {background: linear-gradient(to right, black, #f13, #f13, black);}
@@ -26,36 +47,43 @@ a {
     80% {background: radial-gradient(circle, black, blue, #f23, black);}
     100% {background: linear-gradient(to right, black, #f13, #f13, black);}
 }
+
 @keyframes Space {
    0% {opacity: .2; scale: .6;}
    50% {opacity: 1; scale: 105%;}
    70% {opacity: 1; scale: 1;}
    100% {opacity: .2; scale: .6;}
 }
+
 .N {
     animation: Space;
     animation-timeline: view();
     border: 2px solid #4f9;
     box-shadow: 0 0 30px #4f9;
+    will-change: transform, opacity;
 }
 .M {
     animation: Space;
     animation-timeline: view();
     border: 2px solid fuchsia;
     box-shadow: 0 0 30px fuchsia;
+    will-change: transform, opacity;
 }
 .A {
     animation: Space;
     animation-timeline: view();
     border: 2px solid blue;
     box-shadow: 0 0 30px blue;
+    will-change: transform, opacity;
 }
 .L {
     animation: Space;
     animation-timeline: view();
     border: 2px solid orange;
     box-shadow: 0 0 30px gold;
+    will-change: transform, opacity;
 }
+
 h5 {
     color: gold;
     width: 50%;
@@ -67,6 +95,7 @@ h5 {
     border-radius: 50px;
     box-shadow: 0 0 30px #000;
 }
+
 h4 {
     text-align: center;
     color: #fff;
@@ -77,55 +106,78 @@ h4 {
     position: relative;
     z-index: 5;
 }
-body {
-    transition: 1s easy;
-    font-size: 15px;
-    background: #000;
-}     
+
+@property --bg-angle {
+    inherits: false;
+    initial-value: 0deg;
+    syntax: "<angle>";
+}
+@keyframes spin {
+    to {--bg-angle: 360deg;}
+}
+@keyframes Colors {
+    0% { border: 3px solid #4f9; }
+    25% { border: 1px solid #ff0; }
+    75% { border: 3px solid #f00; }
+    100% { border: 1px solid #f9f; }
+}
+
+/* MAIN COMBINADO CON SUS PROPIEDADES ORIGINALES Y ROTACIÓN 3D INTACTA */
 #Main {
-    border-radius: 10px;
+    border-radius: 1rem;
     position: fixed;   
     scale: 75%;
     z-index: 50; 
     top: 12vh;
     left: 7vh;
     height: 180px;
+    width: min(400px, 90vw);
     padding-left: 5%;
-    background: url(https://bit.ly/47cj9VX);
-    animation: Colors 2s infinite linear alternate running;
-    box-shadow: 0 0 30px purple; 
-    transform: perspective(500px)rotateY(-45deg);
-  &:hover {
-        border: 2px solid gray;
-        background: url(https://bit.ly/3RLgBZq);    
- }  
+    background: url(https://bit.ly/47cj9VX) padding-box, conic-gradient(from var(--bg-angle) in oklch longer hue, oklch(6 3 0) 0 0) border-box;
+    border: 6px solid transparent;
+    box-shadow: 0.125rem 0.25rem 0.25rem 0.5rem oklch(.1 .37 315/.25), 0 0 30px purple; 
+    transform: perspective(500px) rotateY(-45deg);
+    animation: spin 2.5s infinite linear paused, Colors 2s infinite linear alternate running;
+    animation-play-state: running;
+    will-change: transform, border;
 }
-#Pre img{
+#Main:hover {
+    border: 2px solid gray;
+    background: url(https://bit.ly/3RLgBZq) padding-box, conic-gradient(from var(--bg-angle) in oklch longer hue, oklch(6 3 0) 0 0) border-box;    
+}  
+
+#Pre img {
     margin: 0 4rem;
     border-radius: 8px;
     width: 100%;
     height: 90%;
     object-fit: cover;
     transition: 1s linear;
-    transform: perspective(200px)rotateY(20deg);
+    transform: perspective(200px) rotateY(20deg);
     padding-left: 5%;  
+    will-change: transform;
 }    
 #Pre img:hover {     
-      animation: Over 5s linear 1 running;
+    animation: Over 5s linear 1 running;
 }  
 @keyframes Over {
     0% {background: #000;}
-    15% {padding-left: 5%; 
+    15% {
+        padding-left: 5%; 
         border: 2px solid #4f9;
         box-shadow: 0 0 30px 15px #4f9;
-        transform: scale(.7) translate(-30%, 30%);}  
-    80% {padding-left: 5%; 
+        transform: scale(.7) translate(-30%, 30%);
+    }  
+    80% {
+        padding-left: 5%; 
         border: 2px solid #4f9;
         box-shadow: 0 0 30px 15px #4f9;
-        transform: scale(.7) translate(-30%, 30%);}  
+        transform: scale(.7) translate(-30%, 30%);
+    }  
     100% {background: #000;}
 }
-#Pre{
+
+#Pre {
     scale: 70%;
     overflow: scroll;
     display: flex;    
@@ -141,11 +193,13 @@ body {
     top: 4vh;
     left: 5px;   
     position: relative; 
-    transform: perspective(200px)rotateY(20deg);
+    transform: perspective(200px) rotateY(20deg);
     padding-left: 5%;   
     animation: Pre 2s linear; 
-    animation-timeline: view();                
+    animation-timeline: view();   
+    will-change: transform;             
 }
+/* RESTAURADO EL USO DE SCALE INDEPENDIENTE PARA NO ROMPER EL ROTATEY */
 @keyframes Pre {
     0% {scale: 70%; top: 4vh; left: 5px;}
    50% {scale: 70%; top: 4vh; left: 5px;}
@@ -155,91 +209,88 @@ body {
     border: 1px solid black;
     background: rgb(0, 0, 0, 0.5);             
 }  
-#container{
+
+#container {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(100px, 1fr));
     gap: 20px;
 }
-#container img{
+#container img {
     border-radius: 8px;
     width: 100%; height: 22vh; 
     background: rgb(255, 130, 0);
     position: relative;
     z-index: 10;
+    will-change: transform;
 }
-#container img:hover{
+#container img:hover {
     transition: .2s linear;
-    transform: scale(1.5) perspective(200px)rotateY(45deg);
+    transform: scale(1.5) perspective(200px) rotateY(45deg);
     padding-left: 5%; 
 }   
+
 @keyframes slide {
-  0% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-100);
-  }
-  50% {
-    transform: translateX(-100%);
-  }
-  75% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-100); }
+  50% { transform: translateX(-100%); }
+  75% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
 }
 
 #nav {
-	background: #000;
-	border: 2px solid #4f9;
-	box-shadow: 0 0 30px #4f9;
-	height: 60px;	
-	font-size: 20px;
-	border-radius: 10px;
-	position: fixed;
-	z-index: 50;
-	width: 95%;
+    background: #000;
+    border: 2px solid #4f9;
+    box-shadow: 0 0 30px #4f9;
+    height: 60px;    
+    font-size: 20px;
+    border-radius: 10px;
+    position: fixed;
+    z-index: 50;
+    width: 95%;
 }
 #nav ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	float: left;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: left;
 }
 #nav li {
-	float: left;
-	scale: 70%;
-	margin-top: -1vh;
+    float: left;
+    scale: 70%;
+    margin-top: -1vh;
 }
 #nav li a {
-	display: block;
- color: #fff;
-	text-align: center;
-	padding: 0 15px;
-	line-height: 60px;
-	text-decoration: none;
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 0 15px;
+    line-height: 60px;
+    text-decoration: none;
 }
 #nav li a:hover {
- color: gold;
-	border-radius: 50%;
-	transform: scale(1.5);
+    color: gold;
+    border-radius: 50%;
+    transform: scale(1.5);
 }
+
 .logo {
     float: right;
-  	padding: 10px 0;
+    padding: 10px 0;
 }
 .logo img {
     width: 30%;
     position: relative;
-	   left: 5%;
-	   border-radius: 50%;
+    left: 5%;
+    border-radius: 50%;
 }
-#heading{
-    display: fix;
-    margin-left: -20%;
+
+#heading {
+    display: flex;
+    margin-left: -1%;
 }
-.H3{
+
+/* ESTRUCTURA ORIGINAL RESTAURADA PARA LA FORMA NEGRA/ROJA */
+.H3 {
     color: #fff;
     text-align: center;
     background: #000;
@@ -250,32 +301,36 @@ body {
     animation: Space;
     animation-timeline: view();
 }
+
 #Blue {
     list-style: none;
 }
 #Blue li a {
     background: linear-gradient(to right, red, blue);
     background-clip: text;
+    -webkit-background-clip: text;
     color: transparent;
     border-radius: 40%;
 }
-footer{
-	background: #141414;
-	padding: 20px;
-	color: #fff;
-	text-align: center;
+
+footer {
+    background: #141414;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
 } 
-#color{
+
+#color {
     background: url(https://da.gd/TMlSgU);
     background-size: cover;
     width: 100%;
     height: 460px;
-    border-radius:6%;
+    border-radius: 6%;
     border: 2px solid #4f9;
-    box-shadow: 0 0 30px #4f9,
+    box-shadow: 0 0 30px #4f9;
 }
 
-.image-container{
+.image-container {
     display: flex;
 }
 .gallery {
@@ -294,6 +349,7 @@ footer{
     left: 0%;
     top: 30px;
     background: #000;
+    will-change: scroll-position;
 }
 .image {
     width: 140px;
@@ -303,14 +359,16 @@ footer{
     transition: transform 0.3s;
     border-radius: 6px;
     border: 2px solid black;
+    will-change: transform;
 }
-.image:hover{
+.image:hover {
     box-shadow: 0 0 200px purple;
     box-sizing: border-box;
     border: 2px solid purple;
     scale: 130%;   
 }
-#Gif{
+
+#Gif {
     width: 100%;
     scale: 80%;
     border-radius: 50%;
@@ -327,25 +385,6 @@ footer{
     left: 1vh;
 }
 
-@property --bg-angle {
-    inherits: false;
-    initial-value: 0deg;
-    syntax: "<angle>";
-}
-@keyframes Colors {
-    0%{ border: 3px solid #4f9; }
-    25%{ border: 1px solid #ff0; }
-    75%{ border: 3px solid #f00; }
-    100%{ border: 1px solid #f9f; }
-}
-
-* {
-    box-sizing: border-box;    
-}
-
-@property --bg-angle{inherits:false;initial-value:0deg;syntax:"<angle>"}@keyframes spin{to{--bg-angle:360deg}}#Main{border-radius:1rem;box-shadow:.125rem .25rem .25rem .5rem oklch(.1 .37 315/.25);width:min(400px,90vw);animation:spin 2.5s infinite linear paused;background:url(https://bit.ly/47cj9VX) padding-box,conic-gradient(from var(--bg-angle) in oklch longer hue,oklch(6 3 0) 0 0) border-box;border:6px solid transparent;animation-play-state:running}*{box-sizing:border-box}
-
-
 .slider {
   display: flex;
   width: 200%;
@@ -359,6 +398,7 @@ footer{
     background: #000;
     border-radius: 50%;
 }
+
 #Modal {
   position: fixed;
   top: 0;
@@ -370,18 +410,18 @@ footer{
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  animation: fondo 2s linear 1 running;
-  opacity: 0;
+  animation: fondo 2s linear 1 forwards; /* Evita que vuelva a parpadear al final */
+  pointer-events: none;
 }
 @keyframes fondo {
     0% {opacity: 1; }
     99% {opacity: 1; }
-  100% { opacity: 0; }
+  100% { opacity: 0; visibility: hidden; }
 }
+
 .loader {
   margin: 25vh 0vh;
   box-shadow: 0 0 30px 10px #f6d;
-  background: ;
   border: 8px solid fuchsia; 
   border-top: 8px solid #999;
   border-radius: 50%;
@@ -396,4 +436,3 @@ footer{
   95% { transform: rotate(360deg); }
   100% { opacity: 0; }
 }
-

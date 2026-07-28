@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8"/>
+     <meta name="viewport" content="width=device-width"/>
+     <meta name="referrer" content="no-referrer"/>
+     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet"/>
+<style>
+body {
+    background: #000;
+}
+#Emoj {   
+    text-align: center;
+    color: #ccc;        
+    position: relative;
+    left: 18vh;
+    top: -40px;
+    font-weight: bold;
+    font-size: 13px;
+    font-family: comic sans;
+    background: linear-gradient(135deg, #262626 50%, #b2166f 100%);
+    border-radius:50px;
+    opacity: 0.5;
+    scale: 80%;
+    box-shadow: 0px 0px 30px #000000;
+    font-family: Luckiest Guy, cursive;
+    -webkit-text-stroke: .1px #003;
+    text-shadow: 0px .1px 0 #001;
+}
+.span {
+    color: #7F05FF;
+}
+.date {
+    color: #b3bab3;
+}
+.dato{ 
+    margin-top: 2vh;
+    opacity: .9;
+    position: relative;
+    font-family: Luckiest Guy, cursive;
+    -webkit-text-stroke: .1px #003;
+    text-shadow: 0px .1px 0 #001;
+}
+.space {
+    width: 80%;
+    color: #ccc;
+    opacity :0.3;
+    font-family: Luckiest Guy, cursive;
+    -webkit-text-stroke: .1px #003;
+    text-shadow: 0px .1px 0 #001;
+}
+#Aux {
+    color: #aaa;
+    width: 100%;
+    margin-top: 5vh;
+}
+#Aux img {
+    float: left;
+}
+.I {
+    background: url(https://is.gd/L4PVt2);
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    border-radius: 10px;
+}
+#No {
+    width: 15%;
+    opacity: .4;
+}
+/* ========================================================= */
+
+/* Estilos para la sección de sugerencias */
+
+.sug-titulo {
+    color: #aaa;
+    font-size: 15px;
+    margin-bottom: 5vh;
+    font-family: Luckiest Guy, cursive;
+    -webkit-text-stroke: .1px #003;
+    text-shadow: 0px .1px 0 #001;
+    text-align: center;
+}
+
+/* --- ANIMACIÓN DE SALTOS PARA EL TÍTULO --- */
+@keyframes saltoPalabra {
+    0%, 15%, 100% {
+        transform: translateY(0);
+        color: #aaa;
+        text-shadow: 0px .1px 0 #001;
+    }
+    5% {
+        transform: translateY(-8px);
+        color: #4f9;
+        text-shadow: 0 0 10px rgba(68, 255, 153, 0.8);
+    }
+}
+
+.salto-1 { display: inline-block; animation: saltoPalabra 6s infinite 0s; }
+.salto-2 { display: inline-block; animation: saltoPalabra 6s infinite 0.25s; }
+.salto-3 { display: inline-block; animation: saltoPalabra 6s infinite 0.5s; }
+/* ------------------------------------------ */
+
+.sug-wrapper {
+    display: grid;
+    overflow-x: auto;
+    gap: 35px 15px; /* SOLUCIÓN AL ESPACIO: 35px separación vertical (row-gap), 15px horizontal (column-gap) */
+    padding-bottom: 20px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.sug-item {
+    width: 100%;
+    cursor: none;
+    text-align: center;
+}
+
+.sug-item img {
+    width: 90%;
+    height: 30vh;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: 0.4s ease;
+    background: #001;
+}
+
+.sug-item img:hover {
+    scale: 105%;
+    border: 2px solid #4f9;
+    box-shadow: 0 0 20px rgba(68, 255, 153, 0.6);
+}
+
+.sug-item h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    color: #ccc;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.sug-item:hover h4 {
+    color: #4f9;
+}
+
+.sug-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+/* ------------------------------------------ */
+
+footer {
+    color: #fff;	   
+   	padding: 15px;
+   	height: 8vh;
+   	display: grid;
+   	overview-y: auto;
+   	margin-top: 20px;
+   	text-align: center;
+   	background: #141414;
+   	overflow-x: auto;
+	   text-align: center;	   
+	   justify-content: center;
+} 
+#P {
+    font-size: 15px;
+    margin-top: 0vh;
+}
+.btn-reportar {
+    margin-top: -1vh;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ff4d4d;
+    border: 1px solid #ff4d4d;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: none;
+    scale: 70%;    
+    transition: all 0.3s ease;
+}
+.btn-reportar:hover {
+    background-color: #ff4d4d;
+    color: #ffffff;
+}
+
+/* MODAL DE REPORTE */
+.modal-overlay-reporte {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 3000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+.modal-reporte-content {
+    background: #1a1a1a;
+    color: #ffffff;
+    padding: 25px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 380px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border: 1px solid #333;
+}
+.modal-reporte-content h3 {
+    margin-top: 0;
+    color: #ff4d4d;
+    text-align: center;
+    font-size: 1.2rem;
+}
+.pelicula-detectada {
+    background: #2a2a2a;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #ddd;
+    margin-bottom: 15px;
+    border-left: 4px solid #ff4d4d;
+}
+.campo-grupo {
+    margin-bottom: 15px;
+    text-align: left;
+}
+.campo-grupo label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+    color: #aaa;
+}
+.select-reporte, .input-reporte {
+    width: 100%;
+    padding: 10px;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    outline: none;
+}
+.select-reporte:focus, .input-reporte:focus {
+    border-color: #ff4d4d;
+}
+.modal-reporte-botones {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+.btn-modal-rep {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.btn-cancelar-rep {
+    background: #444;
+    color: #fff;
+}
+.btn-enviar-rep {
+    background: #ff4d4d;
+    color: #fff;
+}
+</style>
+</head>
+<body>     
+        
+           <center>
+ <iframe class="I" id="I" src="" style="width:100%; aspect-ration:6/19" frameborder="0" allowfullscreen="true" allow="encrypted-media" allow="autoplay" name="WILLOW"></iframe>
+
+      <B id="Emoj">°PLAY°</B>          
+ 
+        <div class="dato">        
+    <b><span class="span">La</span></b> 
+<span class="date">Movie</span><br />
+      <b><span class="span">Titulo:</span></b> 
+      <span id="T" class="date">Play</span><br />
+          </div>      
+                        
+              <br/>
+       <div id="Aux"></div> 
+              <br/>
+        <div class="space">
+     <h1>°LA MOVIE PROPERTY°</h1>
+                </div> 
+              </center><br/>
+              
+      <!-- SUGERENCIAS -->
+<div id="Sugerencias" class="Container" style="margin-top: 30px; text-align: left; padding-left: 15px;"></div>
+<br/><br/>  
+ 
+ 
+
+   <!-- BOTÓN PARA EL FOOTER -->
+<footer>
+    <p id="P">® LA MOVIE DE JOE•</p>
+    <button class="btn-reportar" onclick="abrirModalReporte()">🚩 Reportar Problema</button>
+</footer>
+
+<!-- MODAL DE REPORTE -->
+<div id="modal-reporte" class="modal-overlay-reporte">
+    <div class="modal-reporte-content">
+        <h3>🚩 Reportar Fallo</h3>
+        
+        <!-- Muestra el título que se está reproduciendo -->
+        <div class="pelicula-detectada">
+            🎬 <strong>Película:</strong> <span id="titulo-reproduciendo">Cargando...</span>
+        </div>
+
+        <!-- SELECT (Lista desplegable de opciones) -->
+        <div class="campo-grupo">
+            <label for="motivo-reporte">¿Cuál es el problema?</label>
+            <select id="motivo-reporte" class="select-reporte" onchange="evaluarMotivo(this.value)">
+                <option value="Enlace Caído">Enlace Caído</option>
+                <option value="Reproducción Lenta">Reproducción Lenta</option>
+                <option value="No Es El Título">No Es El Título</option>
+                <option value="Hay Anuncios">Hay Anuncios</option>
+                <option value="Película No Encontrada">Película No Encontrada</option>
+            </select>
+        </div>
+
+        <!-- CAMPO CONDICIONAL (Solo aparece si selecciona "Película No Encontrada") -->
+        <div class="campo-grupo" id="grupo-buscada" style="display: none;">
+            <label for="pelicula-buscada">¿Qué película estabas buscando?</label>
+            <input type="text" id="pelicula-buscada" class="input-reporte" placeholder="Ej: Men In Black">
+        </div>
+
+        <!-- BOTONES DE ACCIÓN -->
+        <div class="modal-reporte-botones">
+            <button class="btn-modal-rep btn-cancelar-rep" onclick="cerrarModalReporte()">Cancelar</button>
+            <button class="btn-modal-rep btn-enviar-rep" id="btn-enviar-reporte" onclick="enviarReporte()">Enviar Reporte</button>
+        </div>
+    </div>
+</div>   
+            
+            
+ <audio id="AA" src="https://ia601709.us.archive.org/5/items/bass-city-nany-reggae-music/PANTALLA%20EN%20NEGRO.mp3"></audio>
+ 
+<script>
+// SCROLL
+setTimeout(() => {
+    var destino = document.querySelector('.dato');
+    if (destino) {
+        var posicionY = destino.getBoundingClientRect().top + window.scrollY;
+ 
+  // 1. Baja suavemente hacia .dato
+        window.scroll({
+            top: posicionY - 20, 
+            behavior: 'smooth'
+   });
+
+        setTimeout(() => {
+            window.scroll({
+                top: 0, 
+                behavior: 'smooth'
+            });
+       }, 600); 
+    }
+}, 800);
+</script>
+<script>
+<!-- Detectar cuando entra o sale de fullscreen -->
+document.addEventListener('fullscreenchange', function() {
+  if (document.fullscreenElement) {
+    <!-- Si estamos en pantalla completa, bloquear orientación horizontal -->
+    if (screen.orientation && screen.orientation.lock) {
+      screen.orientation.lock('landscape');
+    }
+  } else {
+    <!-- Si salimos de pantalla completa, volver a orientación vertical -->
+    if (screen.orientation && screen.orientation.lock) {
+      screen.orientation.lock('portrait');
+    }
+  }
+});
+
+document.addEventListener('click', function(){
+     Emoj.style.zIndex = "-1";    
+});
+</script>   
+<script>
+    window.onload = () => {
+     if (window.innerWidth > window.innerHeight) {
+    Emoj.style.marginLeft = '100vh';
+  } else {
+    Emoj.style.marginLeft = '0vh';
+  }
+ }
+</script>
+<script>
+var API_KEY = "e29e6334";
+var tituloPredeterminado = T.textContent;
+
+  <!-- Traducción con Google -->
+async function traducir(texto) {
+  try {
+    var res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=es&dt=t&q=${encodeURIComponent(texto)}`);
+    var data = await res.json();
+    return data[0][0][0]; // Texto traducido
+  } catch (error) {
+    console.error("Error al traducir:", error);
+    return texto; // Si falla, muestra el original
+  }
+}
+
+    <!-- OMDB API LÓGICA -->
+window.addEventListener('DOMContentLoaded', async () => {
+  const params = new URLSearchParams(window.location.search);
+  var urlCapt = params.get('url');
+  var tituloCapt = params.get('titulo');
+  
+  var tituloPredeterminado = tituloCapt; 
+
+  // 1. Mostrar el título solo en el ID "T"
+  if (tituloCapt) {
+    var ElementoT = document.getElementById('T');
+    if (ElementoT) ElementoT.textContent = tituloCapt;
+  }
+
+  // 2. Lógica del Iframe y Audio
+  if (urlCapt) {
+    var URL_FINAL = urlCapt;
+    var esArchivoDrive = false; 
+
+    if (urlCapt.includes('file')) {
+      URL_FINAL = urlCapt.split('view')[0] + 'preview';
+      esArchivoDrive = true; 
+    } else if (urlCapt.includes('www.dropbox.com')) {
+      URL_FINAL = urlCapt.replace('www.dropbox.com', 'dl.dropboxusercontent.com');
+    } else if (urlCapt.includes('play.vidyard')) {
+      URL_FINAL = urlCapt; 
+    }
+
+    var iframe = document.getElementById('I');
+    if (iframe) {
+      iframe.src = URL_FINAL;
+    }
+    
+    if (esArchivoDrive) {
+      var audio = document.getElementById('AA');
+      if (audio) {
+        audio.play().catch(e => console.log("Audio bloqueado", e));
+      }
+    }
+  }
+
+  // 3. Integración de OMDb API
+  if (tituloPredeterminado) {
+    var Aux = document.getElementById("Aux");
+    try {
+      var response = await fetch("https://www.omdbapi.com/?t=" + encodeURIComponent(tituloPredeterminado) + "&apikey=" + API_KEY);
+      var data = await response.json();
+
+      if (data.Response === "False") {
+        if (typeof S !== 'undefined') S.style.display = "block";
+        return;
+      }
+
+      var titulo = await traducir(data.Title);
+      var sinopsis = await traducir(data.Plot);
+      var genero = await traducir(data.Genre);
+      var director = await traducir(data.Director);
+      var poster = data.Poster !== "N/A" ? data.Poster : "";
+
+      Aux.innerHTML = `
+        <div class="result-section">
+          <img src="${poster}" alt="${titulo}" style="width: 20%; border-radius: 16px">
+          <div class="result-title">${titulo} (${data.Year})</div>
+          <p><strong>🎬 Género:</strong> ${genero}</p>
+          <p><strong>🎥 Director:</strong> ${director}</p>
+          <p><strong>📝 Sinopsis:</strong> ${sinopsis}</p>
+        </div>
+      `;
+    } catch (error) {
+      console.error("Error API OMDb:", error);
+      if (Aux) Aux.innerHTML = "<img id='No' src='https://bit.ly/3y2BVCO'/><br/>";
+    }
+  }
+});
+</script>
+<script>
+//  MINI base de datos local 
+
+var baseDePeliculas = [
+    { titulo: "THEY WILL KILL YOU", img: "https://is.gd/95lEon", url: "https://drive.google.com/file/d/1pWvuis59ElwxQU5ZXpkljQsnF9KwhtAk/view?usp=drivesdk", esDrive: true },
+    { titulo: "BODA SANGRIENTA 2", img: "https://is.gd/lsZfbM", url: "https://latino.solo-latino.com/es/detail/movie/Scen4HIQ82DEwa1aXDYgf-Ready-or-Not-2-Here-I-Come", esDrive: false },
+    { titulo: "FROM 4", img: "https://is.gd/43SAV2", url: "https://latino.solo-latino.com/es/detail/drama/v3HBgSbGMGBfDZO6EzXza-From-Season-1/1", esDrive: false },
+    { titulo: "WHISTLE", img: "https://is.gd/gqOPmk", url: "https://latino.solo-latino.com/es/detail/movie/126985-Whistle", esDrive: false },
+    { titulo: "PALM SPRINGS", img: "https://is.gd/lFMX5a", url: "https://latino.solo-latino.com/es/detail/movie/89782-Palm-Springs", esDrive: false },
+    { titulo: "DESTINO FINAL 6", img: "https://is.gd/QEYrrD", url: "https://latino.solo-latino.com/es/detail/movie/UsNJzqxwgH0onKw3tlHJT-Final-Destination-Bloodlines", esDrive: false },
+    { titulo: "SINNERS", img: "https://is.gd/MESfXH", url: "https://latino.solo-latino.com/es/detail/movie/ZQPFlUx7o1elWI7DAcbnJ-Sinners", esDrive: false },
+    { titulo: "THE BOYS", img: "https://da.gd/aFqLkg", url: "https://latino.solo-latino.com/es/detail/drama/JTDICXsA2Eb7SZkKflqoN-The-Boys-Season-1/1", esDrive: false },
+    { titulo: "BLACK MIRROR", img: "https://da.gd/wqQvWw", url: "https://latino.solo-latino.com/es/detail/drama/KsvViY0vkVWwvMkxxQ3Zh-Black-Mirror-Season-1/1", esDrive: false },
+    { titulo: "AVATAR", img: "https://bit.ly/4feldB5", url: "https://latino.solo-latino.com/es/detail/drama/SDm5mw1mVh0HogkQJijvf-Avatar-The-Last-Airbender[Audio-Latino]/1", esDrive: false }, 
+    { titulo: "AGATHA", img: "https://da.gd/9dsfgX", url: "https://latino.solo-latino.com/es/detail/drama/Z7uSL6maWx7abC0eiw8LD-Agatha-All-Along[Audio-Latino]/1", esDrive: false },
+    { titulo: "MUSHOKU TENSEI", img: "https://is.gd/HRmDKw", url: "https://latino.solo-latino.com/es/detail/drama/7YRzI2w0TytQs2HJ5kwc8-Mushoku-Tensei-Jobless-Reincarnation-Season-1-Part/1", esDrive: false },
+    { titulo: "TIERRA DE MAFIA", img: "https://is.gd/hQp0J7", url: "https://latino.solo-latino.com/es/detail/drama/TnGPAAqrTEHHepUKWTq8B-MobLand", esDrive: false },
+    { titulo: "DIRK GENTLY", img: "https://is.gd/IwSWaq", url: "https://latino.solo-latino.com/es/detail/drama/9BmxQONumy1KNNbbmGpt0-Dirk-Gentlys-Holistic-Detective-Agency-Season-1/1", esDrive: false },
+    { titulo: "FUTURAMA", img: "https://da.gd/FrElSL", url: "https://latino.solo-latino.com/es/detail/drama/tHa42lElZ3P8PDRyZbtEo-Futurama-Season-1/1", esDrive: false },
+    { titulo: "ALICIA ATRAVÉS DEL ESPEJO", img: "https://da.gd/WbaXQf", url: "https://latino.solo-latino.com/es/detail/movie/fHp4chw4LXRGlO7KVLedm-Alice-in-Wonderland-Through-the-Looking-Glass", esDrive: false },
+    { titulo: "INSIDIOUS", img: "https://is.gd/4LWftO", url: "https://latino.solo-latino.com/es/detail/movie/hPFISrTZvs8br50pamppW-Insidious-The-Red-Door", esDrive: false },
+    { titulo: "JEFES DE ESTADO", img: "https://is.gd/sk0xCm", url: "https://latino.solo-latino.com/es/detail/movie/rrQXkwHIOEIbO7wTztI5Q-Heads-of-State", esDrive: false },
+    { titulo: "NOVOCAINE", img: "https://is.gd/XX9uzA", url: "https://drive.google.com/file/d/1nrGqoPR0FhL5kRN7GXjsdCImWN5kx0bT/view?usp=drivesdk", esDrive: true },
+    { titulo: "DEADPOOL COMBO", img: "https://da.gd/3EfU", url: "https://latino.solo-latino.com/es/detail/movie/Sm4iKjSI9DVzPI7UGbcnD-Deadpool", esDrive: false }, 
+    { titulo: "MICKEY 17", img: "https://is.gd/Y85MuO", url: "https://latino.solo-latino.com/es/detail/movie/7q4J3O1a9zSoYoehLzJao-Mickey-17", esDrive: false },
+    { titulo: "Y DONDE ESTA EL POLICIA", img: "https://is.gd/bzxzsT", url: "https://latino.solo-latino.com/es/detail/movie/8pA6TQGFdomCRoUrz2mwf-The-Naked-Gun", esDrive: false },
+    { titulo: "AMIGOS PASAJEROS 2", img: "https://is.gd/6ACwQa", url: "https://latino.solo-latino.com/es/detail/movie/88640-Vacation-Friends-2", esDrive: false },
+    { titulo: "1899", img: "https://da.gd/WUK4ra", url: "https://latino.solo-latino.com/es/detail/drama/JICbdT00YNUyvwuKqt8K2-1899/1", esDrive: false },
+    { titulo: "WESTWORLD", img: "https://da.gd/2NEa1A", url: "https://latino.solo-latino.com/es/detail/drama/scf6t5fVqIrvj1BsdqcEn-Westworld-Season-1[Audio-Latino]", esDrive: false },
+    { titulo: "EL DIABLO EN OHIO", img: "https://da.gd/fj85x", url: "https://latino.solo-latino.com/es/detail/drama/XW0bzQaPQE0CQLJCu5fSq-Devil-in-Ohio[Audio-Latino]/1", esDrive: false },
+    { titulo: "THE GRAY MAN", img: "https://da.gd/5hg4", url: "https://drive.google.com/file/d/1U-zBTivbIV4TniRoKnFMfCVz5MUJ-GXc/view?usp=drive_link", esDrive: true },
+    { titulo: "BRICKLEBERRY", img: "https://da.gd/yKQ4B", url: "https://latino.solo-latino.com/es/detail/drama/tNN9IaUvc8Xqek2jHt2Ek-Brickleberry-Season-1", esDrive: false },
+    { titulo: "ALGO TERRIBLE ESTA A PUNTO DE SUCEDER", img: "https://is.gd/qqG2hZ", url: "https://latino.solo-latino.com/es/detail/drama/cBb8QFEOuq8D9RjT861fQ-Something-Very-Bad-Is-Going-to-Happen/1", esDrive: false },
+    { titulo: "LA CASA DEL DRAGON", img: "https://da.gd/rlkb1", url: "https://latino.solo-latino.com/es/detail/drama/fv3CdkPKbxP0JtCNSREsK-House-of-the-Dragon[Audio-Latino]/1", esDrive: false }
+];
+
+function cargarSugerencias() {
+    const contenedor = document.getElementById('Sugerencias');
+    if (!contenedor) return;
+
+    // 2. Mezclar el array aleatoriamente (Algoritmo Fisher-Yates)
+    
+    let mezcladas = [...baseDePeliculas].sort(() => 0.5 - Math.random());
+    
+    let seleccionadas = mezcladas.slice(0, 6);
+
+     // AQUÍ SE APLICAN LOS SPANS PARA LA ANIMACIÓN DE SALTOS
+     let html = '<h3 class="sug-titulo">🧋 <span class="salto-1">TE</span> <span class="salto-2">PODRÍA</span> <span class="salto-3">INTERESAR</span> 🧋</h3><div class="sug-wrapper">';
+
+    seleccionadas.forEach(peli => {
+        let tituloCodificado = encodeURIComponent(peli.titulo);
+        let urlCodificada = encodeURIComponent(peli.url);
+        
+        let accionClick = peli.esDrive 
+            ? `onclick="window.location.href='?titulo=${tituloCodificado}&url=${urlCodificada}'"`
+            : `onclick="window.location.href='${peli.url}'"`;
+
+        html += `
+        <div class="sug-item" ${accionClick}>
+            <img src="${peli.img}" alt="${peli.titulo}">
+            <h4>${peli.titulo}</h4>
+        </div>`;
+    });
+    
+    html += '</div>';
+    
+ 
+    contenedor.innerHTML = html;
+}
+
+// Ejecutar cuando el reproductor termine de cargar
+document.addEventListener('DOMContentLoaded', cargarSugerencias);
+</script>
+<script>
+    // ABRIR Y CERRAR MODAL
+function abrirModalReporte() {
+    let tituloActual = "Título no identificado";
+    const elementoTitulo = document.querySelector('#T');
+    
+    if (elementoTitulo && elementoTitulo.innerText.trim() !== "") {
+        tituloActual = elementoTitulo.innerText.trim();
+       } else {
+  tituloActual = document.title;
+    }
+
+    document.getElementById('titulo-reproduciendo').innerText = tituloActual;
+    document.getElementById('modal-reporte').style.display = 'flex';
+}
+
+function cerrarModalReporte() {
+    document.getElementById('modal-reporte').style.display = 'none';
+    // Limpiar campos
+    document.getElementById('motivo-reporte').value = "Enlace Caído";
+    document.getElementById('pelicula-buscada').value = "";
+    document.getElementById('grupo-buscada').style.display = 'none';
+}
+
+// MOSTRAR/OCULTAR CAMPO SI ES "Película No Encontrada"
+function evaluarMotivo(valor) {
+    const grupoBuscada = document.getElementById('grupo-buscada');
+    if (valor === "Película No Encontrada") {
+        grupoBuscada.style.display = 'block';
+        document.getElementById('pelicula-buscada').focus();
+    } else {
+        grupoBuscada.style.display = 'none';
+    }
+}
+
+   // ENVIAR REPORTE A FORMSUBMIT
+function enviarReporte() {
+    const titulo = document.getElementById('titulo-reproduciendo').innerText;
+    const motivo = document.getElementById('motivo-reporte').value;
+    const peliculaBuscada = document.getElementById('pelicula-buscada').value.trim();
+
+    // Validación si eligió "Película No Encontrada" pero no escribió cuál
+    if (motivo === "Película No Encontrada" && peliculaBuscada === "") {
+        alert("Por favor, escribe el nombre de la película que estabas buscando.");
+        document.getElementById('pelicula-buscada').focus();
+        return;
+    }
+
+    const btnEnviar = document.getElementById('btn-enviar-reporte');
+    const textoOriginal = btnEnviar.innerText;
+    btnEnviar.innerText = "Enviando... ⏳";
+    btnEnviar.disabled = true;
+
+    // Construir los datos para el correo
+    const datosEnvio = {
+        _subject: `🚩 Reporte de Fallo: ${motivo} - ${titulo}`,
+        "Película Afectada": titulo,
+        "Motivo del Reporte": motivo
+    };
+
+    if (motivo === "Película No Encontrada") {
+        datosEnvio["Película que buscaba el usuario"] = peliculaBuscada;
+    }
+
+
+    
+    // ENVÍO SILENCIOSO MEDIANTE FORMSUBMIT CON EXCEPCIÓN DE SEGURIDAD
+    fetch("https://formsubmit.co/ajax/lamoviedeoro@gmail.com", {
+        method: "POST",
+        referrerPolicy: "strict-origin-when-cross-origin", 
+  // <--- ESTA ES LA LÍNEA MÁGICA
+  
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(datosEnvio)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success === "true" || data.success === true) {
+            alert("¡Muchas Gracias! Tu Reporte Ha Sido Enviado Con Éxito.");
+            cerrarModalReporte();
+        } else {
+            alert("🛠️...🛠️");
+        }
+    })
+    .catch(error => {
+        alert("Error de conexión. Revisa tu internet o intenta más tarde.");
+        console.error(error);
+    })
+    .finally(() => {
+        btnEnviar.innerText = textoOriginal;
+        btnEnviar.disabled = false;
+    });
+}
+</script>
+</body>
+</html>
+
+

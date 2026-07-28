@@ -31,49 +31,143 @@ document.addEventListener("keyup", e => {
     No.style.display = foundMatch ? "none" : "block";
   }
 
-  // Manejo del Enter
-  if (e.key === "Enter") {
-    var Int = e.target.value.toLowerCase().trim();
-    var incluyeÑ = Int.includes("ñ");
-    var inputValue = Tildes(Int.replace(/\s+/g, ' '), incluyeÑ);
+     // FUNCIÓN CENTRALIZADA
+function procesarEnlace(matchedItem) {
+  if (!matchedItem) return;
 
-    var matchedItem = [...document.querySelectorAll(".Data")].find(
-      item => Tildes(item.textContent.toLowerCase(), incluyeÑ) === inputValue
-    );
+  var ENLACE = matchedItem.getAttribute("href") || matchedItem.href;
+  var NN = matchedItem.textContent;
+  
+  var isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  var tituloLimpio = NN.replace(/🍿|🌐|📺|⚙️/g, '').trim();
 
-    if (matchedItem) {
-      var ENLACE = matchedItem.getAttribute("href");
-       if (CANALES.some(item => ENLACE.includes(item))) {
-     Main.src = ENLACE; 
-       buscador.value = '';          
-    Lista.style.display = 'none';
-    buscador.placeholder = inputValue;  
-buscador.classList.add('PlaceHolder');     
-        audio.pause();
-Main.style.background = 'black';
-           } else {
-    window.location.href = matchedItem.href;
-    buscador.value = '';
-         audio.pause();
-      }
+ var CADENA = ['file', 'www.dropbox.com', 'play.vidyard', 'okpeliz.com'];
+ 
+  if (CADENA.some(dominio => ENLACE.includes(dominio))) {
+    window.location.href = `PLAY.html?titulo=${encodeURIComponent(tituloLimpio)}&url=${encodeURIComponent(ENLACE)}`;
+  } else {
+    if (!isMobile && ENLACE.includes("latino.solo")) {
+      window.location.href = "https://www.google.com/search?q=site:sololatino.net+" + encodeURIComponent(tituloLimpio);
+    } else if (NN.includes('🌐')) {
+      window.location.href = `${ENLACE}?texto=${encodeURIComponent(tituloLimpio)}`;
     } else {
-           Check();
-      Lista.style.display = 'none';
-      No.style.display = "none";
+      window.location.href = ENLACE;
+    }
+  }
+  
+  var buscadorInput = document.getElementById("buscador");
+  if (buscadorInput) {
+    buscadorInput.value = '';
+  }
+}
+
+
+       // MANEJO DEL ENTER
+document.addEventListener("keydown", function(event) {
+  if (event.target.matches("#buscador") && event.key === "Enter") {
+    event.preventDefault();
+    
+    let textPre = event.target.value.trim();
+    if (textPre === "") return;
+
+    // 1. Asignar prefijo automáticamente si no lo tiene
+    let prefijo = '🍿';
+    const lowerText = textPre.toLowerCase();
+    if (lowerText.includes('tv')) {
+      prefijo = '📺';
+    } else if (lowerText.includes('sofia')) {
+      prefijo = '⚙️';
+    }
+    
+    if (!textPre.startsWith('🍿') && !textPre.startsWith('📺') && !textPre.startsWith('⚙️') && !textPre.startsWith('🌐')) {
+      event.target.value = prefijo + textPre;
+    }
+
+    var In = event.target.value.trim();
+    var incluyeÑ = In.toLowerCase().includes("ñ");
+    
+    // Función interna para limpiar tildes y normalizar espacios
+    function limpiarTexto(texto) {
+      let limpio = texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+      if (!incluyeÑ) {
+        limpio = limpio.replace(/ñ/g, "n");
+      }
+      return limpio.replace(/\s+/g, ' ').trim();
+    }
+
+    var InputLimpiado = limpiarTexto(In);
+    var matchedItem = null;
+    var elementosData = document.querySelectorAll(".Data"); 
+    
+    // 2. Recorrer elementos para buscar coincidencia exacta o parcial
+    for (var i = 0; i < elementosData.length; i++) {
+      var textoCrudo = elementosData[i].textContent;
+      var textoSinEmojis = textoCrudo.replace(/🍿|🌐|📺|⚙️/g, '').trim();
+      var textoItem = limpiarTexto(textoSinEmojis);
+      
+      // Comparamos si el texto coincide
+      if (textoItem === limpiarTexto(textoSinEmojis)) { 
+        // Si el input limpiado coincide con el item de la lista (o lo contiene exactamente)
+        if (textoItem === InputLimpiado.replace(/🍿|🌐|📺|⚙️/g, '').trim()) {
+          matchedItem = elementosData[i].tagName.toLowerCase() === 'a' ? elementosData[i] : elementosData[i].querySelector("a");
+          if (matchedItem) {
+            break; 
+          }
+        }
+      }
+    }
+
+    // 3. Ejecutar acción o pasar a Check()
+    if (matchedItem) {
+      procesarEnlace(matchedItem);
+    } else {
+      if (typeof Check === "function") {
+        Check();
+      }
     }
   }
 });
 
 
-      function Check() {
-       window.location.href = 'https://latino.solo-latino.com/es/search?keyword=' + buscador.value;
-       buscador.value = '';
-  };
+     // MANEJO DEL CLICK 
+document.addEventListener("click", function(event) {
+  var matchedItem = event.target.closest("a"); 
+  
+  if (matchedItem) {
+    var href = matchedItem.getAttribute("href");
+    if (href && href !== "#") {
+      event.preventDefault();
+      procesarEnlace(matchedItem);
+    }
+   }
+ });
+});
 
+
+     function Check() {
+  var isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);   
+  
+          
+  const urlDestino = `${'GOOGLE.html'}?texto=${buscador.value}`;
+      
+     var domain = isMobile ? urlDestino : 'https://www.google.com/search?q=site:sololatino.net+' + encodeURIComponent(buscador.value);
+  
+  window.location.href = domain;
+  buscador.value = '';
+};
+
+      // SEARCH CLICK
+Buscar.onclick = () => {
+  if (buscador.value !== '') {
+    Check();
+  } 
+};
+
+    
 
 
 function openMovie(titulo, urlArchivo) {
-  const urlDestino = `https://lamovie.github.io/La-Movie-Delux/PLAY2.html?titulo=${encodeURIComponent(titulo)}&url=${encodeURIComponent(urlArchivo)}`;
+  const urlDestino = `PLAY2.html?titulo=${encodeURIComponent(titulo)}&url=${encodeURIComponent(urlArchivo)}`;
    
   window.location.href = urlDestino;
 }
@@ -97,13 +191,14 @@ section {
     justify-content: center;
     align-items: center;
 }
-input {    
+input {
+    color: #fff;
     width: 100%;
     padding: 10px;
     outline: none;
     font-weight: 600;
     border-radius: 20px;
-    background: gold;
+    background: linear-gradient(to right, blue, red);    
     border: 2px solid red;   
 }
 #Lista {
@@ -172,24 +267,7 @@ h1 {
 
      Aux.innerHTML = HTML;
 
- buscador.addEventListener('keydown', function(event) {
-   if (event.key === 'Enter') { 
-                event.preventDefault(); 
-  var TextPre = buscador.value.toLowerCase().trim(); 
-  let Prefijo;
  
- if (TextPre.includes('tv')) {
-         Prefijo = '📺';
-     } else if(TextPre.includes('sofia')){
-         Prefijo = '⚙️';
-     } else {
-         Prefijo = '🍿';
-     }   
-   var Texto = Prefijo + TextPre;       
-   buscador.value = Texto; 
-  }
-});    
-
        No.alt = 'No EnCoNTraDO';
       No.style.color = '#fff';   
       
@@ -281,8 +359,19 @@ document.addEventListener('fullscreenchange', function() {
   }
 });     
      
-document.write(unescape("%3Cscript%20src%3D%22https%3A%2F%2Flamovie.github.io%2FBuscador%2FBuscador.js%22%3E%3C%2Fscript%3E%3Cscript%20src%3D%22https%3A%2F%2Flamovie.github.io%2FBuscador%2FBuscador2.js%22%3E%3C%2Fscript%3E%3Cscript%20src%3D%22https%3A%2F%2Flamovie.github.io%2FBuscador%2FBuscador3.js%22%3E%3C%2Fscript%3E"));
+// BUSCADORES
+      const S = [
+  "https://lamovie.github.io/Buscador/Buscador.js",
+  "https://lamovie.github.io/Buscador/Buscador2.js",
+  "https://lamovie.github.io/Buscador/Buscador3.js"
+];
 
+  S.forEach(src => {
+  const scripts = document.createElement("script");
+  scripts.src = src;
+  document.body.appendChild(scripts);
+});
+  
 
 
     // https://bit.ly/3y2BVCO    
