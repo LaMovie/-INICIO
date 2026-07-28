@@ -38,8 +38,8 @@ function galleryImg() {
    }
         isNeon = !isNeon;
 });
-    X.addEventListener('click', function() {
-     isNeon = !isNeon;
+
+    X.addEventListener('click', function() {     
      
        if(isNeon){
           Fondo();  
@@ -48,6 +48,7 @@ function galleryImg() {
           Neon();
         LookNeon();
    }
+        isNeon = !isNeon; 
 });
  
        

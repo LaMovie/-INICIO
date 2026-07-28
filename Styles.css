@@ -133,7 +133,7 @@ h4 {
     height: 180px;
     width: min(400px, 90vw);
     padding-left: 5%;
-    background: url(https://bit.ly/47cj9VX) padding-box, conic-gradient(from var(--bg-angle) in oklch longer hue, oklch(6 3 0) 0 0) border-box;
+    background: #000 padding-box, conic-gradient(from var(--bg-angle) in oklch longer hue, oklch(6 3 0) 0 0) border-box;
     border: 6px solid transparent;
     box-shadow: 0.125rem 0.25rem 0.25rem 0.5rem oklch(.1 .37 315/.25), 0 0 30px purple; 
     transform: perspective(500px) rotateY(-45deg);
@@ -141,10 +141,6 @@ h4 {
     animation-play-state: running;
     will-change: transform, border;
 }
-#Main:hover {
-    border: 2px solid gray;
-    background: url(https://bit.ly/3RLgBZq) padding-box, conic-gradient(from var(--bg-angle) in oklch longer hue, oklch(6 3 0) 0 0) border-box;    
-}  
 
 #Pre img {
     margin: 0 4rem;
