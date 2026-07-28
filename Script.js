@@ -58,6 +58,7 @@ function galleryImg() {
    buscador.style.background = 'linear-gradient(to right, blue, red)';
    buscador.style.color = '#fff';
    No.style.color = '#fff';
+   buscador.style.border = '2px solid red';
        }
        
        function LookFondo(){
@@ -65,6 +66,7 @@ function galleryImg() {
   buscador.style.background = 'gold';
   buscador.style.color = '#000';
   No.style.color = '#000';
+  buscador.style.border = '2px solid red';
        }
 
 
@@ -106,7 +108,7 @@ function galleryImg() {
      
           
      
-       let isNeon = true;
+       let isNeon = true;      
     
       function Fondo(){   
       document.body.style.animation = 'Back';  document.body.style.animationTimeline = 'view()'; 
@@ -256,7 +258,7 @@ window.addEventListener("resize", Handle);
    if (Hora >= 7 && Hora < 20) {
         Fondo();
       isNeon = false;
-      
+     
             } else {
        
         Neon();

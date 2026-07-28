@@ -199,9 +199,27 @@ input {
     outline: none;
     font-weight: 600;
     border-radius: 20px;
-    background: linear-gradient(to right, blue, red);    
-    border: 2px solid red;   
+    background: linear-gradient(
+    270deg,
+    #ff00cc,
+    #8a2be2,
+    #00bf33,
+    #038,
+    purple
+);
+animation: rgbMove 8s linear infinite;
+background-size: 600% 600%;
+    border: .8px solid blue; 
+    box-shadow:
+        0 0 20px rgba(0,255,255,.35),
+        0 10px 30px rgba(0,0,0,.5);
+    transition:.35s;         
 }
+@keyframes rgbMove {
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+} 
 #Lista {
     scale: 90%;
     left: -3vh;
