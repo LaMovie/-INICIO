@@ -23,6 +23,7 @@ body {
 }     
 
 a {
+    cursor: none;
     text-decoration: none;
 }
 
