@@ -65,10 +65,45 @@ function galleryImg() {
   No.style.color = '#000';
        }
 
-     Pre.addEventListener('click', function() {     
-       Neon();
-     LookNeon();
-});
+
+     
+    Pre.addEventListener('click', function(e) {
+  // 1. Buscamos si el elemento tocado es un enlace (A) o tiene un 'onclick' (ignorando al propio contenedor #Pre)
+  let target = e.target.closest('a, [onclick]:not(#Pre)');
+
+  // 2. Ejecutamos tus funciones visuales inmediatamente
+  Neon();
+  LookNeon();
+  
+  // (Opcional) Como vamos a congelar el clic, disparamos tu playSound manualmente si existe
+  if (typeof playSound === 'function') {
+      playSound();
+  }
+
+  // Si el usuario tocó un espacio vacío dentro de #Pre que no hace nada, terminamos aquí
+  if (!target) return;
+
+  // 3. ¡La clave! Detenemos la navegación y bloqueamos que los 'onclick' del HTML se disparen solos
+  e.preventDefault();
+  e.stopPropagation();
+
+  // 4. Retenemos todo por 2 segundos (2000 milisegundos) para apreciar la animación
+  setTimeout(() => {
+    if (target.hasAttribute('onclick')) {
+      // Si el elemento tenía un onclick en el HTML (ej: openMovie), extraemos su código y lo ejecutamos
+      let script = target.getAttribute('onclick');
+      new Function(script).call(target);
+    } else if (target.tagName.toUpperCase() === 'A') {
+      // Si es un enlace normal (<a href="...">), redirigimos la página
+ window.location.href = target.href;
+    }
+  }, 1000);
+  
+}, true); // <-- IMPORTANTE: Este 'true' activa la "Fase de Captura" para atrapar el clic a tiempo.
+ 
+     
+          
+     
        let isNeon = true;
     
       function Fondo(){   
