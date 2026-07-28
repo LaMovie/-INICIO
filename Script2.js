@@ -147,10 +147,11 @@ document.addEventListener("click", function(event) {
      function Check() {
   var isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);   
   
+  var LIMPIO = buscador.value.replace('🍿', '');
           
-  const urlDestino = `${'GOOGLE.html'}?texto=${buscador.value}`;
+  const urlDestino = `${'GOOGLE.html'}?texto=${LIMPIO}`;
       
-     var domain = isMobile ? urlDestino : 'https://www.google.com/search?q=site:sololatino.net+' + encodeURIComponent(buscador.value);
+     var domain = isMobile ? urlDestino : 'https://www.google.com/search?q=site:sololatino.net+' + encodeURIComponent(LIMPIO);
   
   window.location.href = domain;
   buscador.value = '';
