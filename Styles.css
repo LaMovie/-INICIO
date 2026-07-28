@@ -258,6 +258,7 @@ h4 {
 #nav li a {
     display: block;
     color: #fff;
+    cursor: none;
     text-align: center;
     padding: 0 15px;
     line-height: 60px;
@@ -279,7 +280,9 @@ h4 {
     left: 5%;
     border-radius: 50%;
 }
-
+.logo a {
+    cursor: none;
+}
 #heading {
     display: flex;
     margin-left: -1%;
