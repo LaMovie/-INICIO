@@ -9,11 +9,29 @@
 body {
     background: #000;
 }
+#Emoj {   
+    text-align: center;
+    color: #ccc;        
+    position: relative;
+    left: 18vh;
+    top: -40px;
+    font-weight: bold;
+    font-size: 13px;
+    font-family: comic sans;
+    background: linear-gradient(135deg, #262626 50%, #b2166f 100%);
+    border-radius:50px;
+    opacity: 0.5;
+    scale: 80%;
+    box-shadow: 0px 0px 30px #000000;
+    font-family: Luckiest Guy, cursive;
+    -webkit-text-stroke: .1px #003;
+    text-shadow: 0px .1px 0 #001;
+}
 .span {
-    color: #f29;
+    color: #7F05FF;
 }
 .date {
-    color: #fa2;
+    color: #b3bab3;
 }
 .dato{ 
     margin-top: 2vh;
@@ -49,66 +67,6 @@ body {
 #No {
     width: 15%;
     opacity: .4;
-}
-#X {
-    width: 10vh;
-    border-radius: 50%;
-    position: fixed;
-    left: 40vh;
-    top: 0vh;
-    opacity: .6;
-    transition: 1s ease; 
-    filter: saturate(200%);
-}
-
-/* =========================================================
-   NUEVA ANIMACIÓN ÉPICA PARA EL LOGO "X"
-   "Explosión de Energía y Desvanecimiento Cuántico"
-   ========================================================= */
-@keyframes X {
-  0% {
-    top: 0vh; left: 40vh;
-    scale: 0.6;
-    opacity: 0.6;
-    filter: saturate(200%) blur(0px);
-    box-shadow: 0 0 10px rgba(255, 0, 153, 0.5); /* Resplandor rosado inicial */
-    pointer-events: auto; /* Se puede interactuar al inicio */
-  }
-  10% {
-    top: 0vh; left: 40vh;
-    scale: 0.8; /* Pequeño encogimiento antes del salto */
-    opacity: 1; /* Parpadea a opacidad total */
-    filter: saturate(300%) blur(2px); /* Más saturación y ligero desenfoque */
-    box-shadow: 0 0 50px rgba(255, 0, 153, 1); /* Brillo intenso de energía */
-  }
-
-  /* FASE 2 (10-30%): La Gran Explosión (0.2s-0.6s) */
-  20% {
-    top: 0vh; left: 40vh;
-    scale: 2.5; /* Comienza la expansión dramática */
-    opacity: 0.9;
-    filter: saturate(200%) blur(8px) drop-shadow(0 0 10px white); /* Desenfoque de explosión y rastro blanco */
-    box-shadow: 0 0 100px rgba(255, 0, 153, 1); /* Resplandor masivo */
-  }
-  30% {
-    top: 0vh; left: 40vh;
-    scale: 10; /* La onda de choque se expande completamente */
-    opacity: 0; /* Se vuelve transparente */
-    filter: blur(20px); /* Desenfoque extremo de las partículas remanentes */
-    box-shadow: 0 0 200px rgba(255, 0, 153, 0); /* La onda se disipa */
-    pointer-events: none; /* Asegura que no se pueda interactuar */
-  }
-
-  /* FASE 3 (30-100%): Limpieza y Dispersión Cuántica (0.6s-2s) */
-  /* Durante esta fase, el logo está invisible y no bloquea clics, pero
-     se mueve completamente fuera de la vista para limpieza */
-  100% {
-    top: -100vh; left: 100vw; /* Se mueve a una esquina lejana fuera de la pantalla */
-    scale: 0.1; /* Se encoge al mínimo absoluto */
-    opacity: 0; /* Permanece invisible */
-    z-index: -100; /* Asegura que esté detrás de todo */
-    pointer-events: none;
-  }
 }
 /* ========================================================= */
 
@@ -316,7 +274,7 @@ footer {
     width: 6px;
 }
 #S::-webkit-scrollbar-thumb {
-    background: #f29; 
+    background: #7F05FF; 
     border-radius: 10px;
 }
 #S::-webkit-scrollbar-track {
@@ -389,10 +347,9 @@ footer {
 <body>     
         
            <center>
-      <img id="X" src="https://da.gd/BPXzU"/>
-      
  <iframe class="I" id="I" src="" style="width:100%; aspect-ration:6/19" frameborder="0" allowfullscreen="true" allow="encrypted-media" allow="autoplay" name="WILLOW"></iframe>
 
+      <B id="Emoj">°PLAY°</B>          
  
         <div class="dato">        
     <b><span class="span">La</span></b> 
@@ -401,27 +358,27 @@ footer {
       <span id="T" class="date">Play</span><br />
           </div>      
 
-                        
+
 <div id="trailerModal">
     <button class="cerrar-modal" onclick="cerrarTrailer()">❌</button>
     <div class="video-container">
         <iframe id="iframeTrailer" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 </div>
-
+                        
               <br/>
        <div id="Aux"></div> 
               <br/>
         <div class="space">
      <h1>°LA MOVIE PROPERTY°</h1>
                 </div> 
-              </center><br/>  
-           
-        <!-- SUGERENCIAS -->
+              </center><br/>
+              
+      <!-- SUGERENCIAS -->
 <div id="Sugerencias" class="Container" style="margin-top: 30px; text-align: left; padding-left: 15px;"></div>
-<br/><br/>
-            
-
+<br/><br/>  
+ 
+ 
 
    <!-- BOTÓN PARA EL FOOTER -->
 <footer>
@@ -463,11 +420,11 @@ footer {
             <button class="btn-modal-rep btn-enviar-rep" id="btn-enviar-reporte" onclick="enviarReporte()">Enviar Reporte</button>
         </div>
     </div>
-</div>
-
-
+</div>   
+            
+            
  <audio id="AA" src="https://ia601709.us.archive.org/5/items/bass-city-nany-reggae-music/PANTALLA%20EN%20NEGRO.mp3"></audio>
-
+ 
 <script>
 // SCROLL
 setTimeout(() => {
@@ -506,14 +463,16 @@ document.addEventListener('fullscreenchange', function() {
   }
 });
 
-  X.style.animation = 'X 2.5s linear 18s forwards running'; 
+document.addEventListener('click', function(){
+     Emoj.style.zIndex = "-1";    
+});
 </script>   
 <script>
     window.onload = () => {
      if (window.innerWidth > window.innerHeight) {
-    X.style.marginLeft = '100vh';
+    Emoj.style.marginLeft = '100vh';
   } else {
-    X.style.marginLeft = '0vh';
+    Emoj.style.marginLeft = '0vh';
   }
  }
 </script>
@@ -778,9 +737,9 @@ function enviarReporte() {
         datosEnvio["Película que buscaba el usuario"] = peliculaBuscada;
     }
 
-        
+
     
-     // ENVÍO SILENCIOSO MEDIANTE FORMSUBMIT CON EXCEPCIÓN DE SEGURIDAD
+    // ENVÍO SILENCIOSO MEDIANTE FORMSUBMIT CON EXCEPCIÓN DE SEGURIDAD
     fetch("https://formsubmit.co/ajax/lamoviedeoro@gmail.com", {
         method: "POST",
         referrerPolicy: "strict-origin-when-cross-origin", 
@@ -813,3 +772,5 @@ function enviarReporte() {
 </script>
 </body>
 </html>
+
+
