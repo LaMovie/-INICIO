@@ -78,7 +78,7 @@ function galleryImg() {
   // 2. Ejecutamos tus funciones visuales inmediatamente
   Neon();
   LookNeon();
-  
+   isNeon = true;
   // (Opcional) Como vamos a congelar el clic, disparamos tu playSound manualmente si existe
   if (typeof playSound === 'function') {
       playSound();
@@ -255,7 +255,7 @@ window.addEventListener("resize", Handle);
      function mostrarHora() {
  var Hora = new Date().getHours();
 
-   if (Hora >= 7 && Hora < 20) {
+   if (Hora >= 7 && Hora < 19) {
         Fondo();
       isNeon = false;
      
