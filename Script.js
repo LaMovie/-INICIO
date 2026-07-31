@@ -326,7 +326,7 @@ var ALT = event.target.alt;
  }).then((result) => {
         
      if (result.isConfirmed) {
-         window.open('https://lamovie.github.io/CONTENIDO/X-TV.html');            
+         abrirFuera('https://lamovie.github.io/CONTENIDO/X-TV.html');            
         }
    });
 }
