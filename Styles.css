@@ -437,3 +437,17 @@ footer {
   95% { transform: rotate(360deg); }
   100% { opacity: 0; }
 }
+.swal2-container {
+    z-index: 9999999 !important; 
+}
+#A {
+    z-index: 999999 !important;
+    animation: color .8s linear infinite running;
+}
+@keyframes color {
+    0% {color: blue;}
+    50% {color: #4f3;}
+    100% {color: red;}
+}
+
+

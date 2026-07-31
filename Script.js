@@ -303,8 +303,36 @@ var ALT = event.target.alt;
     }
 };
 
-     
-     
+
+          // INTENT
+ function abrirFuera(urlDestino) {
+     var urlSinProtocolo = urlDestino.replace("https://", "");
+      
+      var intentURL = "intent://" + urlSinProtocolo + "#Intent;scheme=https;action=android.intent.action.VIEW;end;";
+      
+ window.location.href = intentURL;
+    }    
+
+
+
+       // PRECAUTION MOBILE 
+     TV.onclick = () => {
+         Swal.fire({
+    title: '⚠️Usar Un Bloqueador De Anuncios⚠️', 
+    html: '<a id="A" href="https://play.google.com/store/apps/details?id=com.hsv.freeadblockerbrowser" target="_blank">🔴 FreeAddBlockerBrowser 🔴</a>', 
+    icon: 'info',
+     confirmButtonText: 'Entrar',
+     confirmButtonColor: '#3085d6',
+ }).then((result) => {
+        
+     if (result.isConfirmed) {
+         window.open('https://lamovie.github.io/CONTENIDO/X-TV.html');            
+        }
+   });
+}
+
+
+
 
 
 
