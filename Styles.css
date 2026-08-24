@@ -450,4 +450,40 @@ footer {
     100% {color: red;}
 }
 
+/* REGLAS EXCLUSIVAS PARA PC Y PANTALLAS GRANDES */
+@media (min-width: 768px) {
+    
+    /* 1. Solución para el Gif gigante */
+    #Gif {
+        width: auto; /* Quitamos el 100% */
+        max-width: 300px; /* Evita que crezca más de 300px en PC */
+    }
+
+    /* 2. Solución para centrar los elementos de la cabecera */
+    #nav {
+        display: flex;
+        justify-content: center; /* Centra todo el menú */
+        align-items: center;
+    }
+    
+    #nav ul {
+        float: none; /* Anulamos el float original */
+        display: flex;
+        gap: 20px; /* Separa los botones del menú */
+        margin: 0 auto; 
+    }
+
+    #nav li {
+        float: none; /* Anulamos el float original que los tiraba a la izquierda */
+        margin-top: 0;
+    }
+
+    /* 3. Solución para el iframe (Reproductor) */
+    #Main {
+        left: 50%; /* Lo movemos al centro de la pantalla */
+        transform: perspective(500px) rotateY(-45deg) translateX(-50%); /* Centrado absoluto manteniendo tu efecto 3D */
+        width: 600px; /* Lo hacemos un poco más grande para PC */
+    }
+}
+
 
