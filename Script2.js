@@ -84,11 +84,12 @@ function procesarEnlace(matchedItem) {
         window.location.href = `PLAY.html?titulo=${encodeURIComponent(tituloLimpio)}&url=${encodeURIComponent(ENLACE)}`;
     } else {
         if (!isMobile && ENLACE.includes("latino.solo")) {
-            window.location.href = "https://www.google.com/search?q=site:sololatino.net+" + encodeURIComponent(tituloLimpio);
+ var ENLACE = ENLACE.replace('latino.solo-latino', 'h5.swplayer');     
+   window.location.href = ENLACE;
         } else if (NN.includes('🌐')) {
             window.location.href = `${ENLACE}?texto=${encodeURIComponent(tituloLimpio)}`;
         } else {
-            window.location.href = ENLACE;
+  window.location.href = ENLACE;
         }
     }
     

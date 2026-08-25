@@ -285,23 +285,34 @@ document.addEventListener('fullscreenchange', function() {
 });                  
 
 
-       <!-- ONFILOM -->
-                  
-     var TOTAL = document.querySelector('.gallery');
+       <!-- SWPLAYER -->
+      
+      // Detectar si es móvil
+    var isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                
+     
+  document.onclick = (event) => {
+    if (isMobile) return;
 
-  TOTAL.onclick = (event) => {
-var URL = event.target.closest('a');
-var ALT = event.target.alt; 
-// Busca el <a> más cercano
+    // Buscamos si el elemento clickeado es un enlace <a> o está dentro de uno
+    let anchor = event.target.closest('a');
+    
+    // Si no se hizo clic en ningún enlace, no hacemos nada
+    if (!anchor) return;
 
-    if (URL) {
- // Si se hizo clic en un <a> (o su contenido, como la imagen)
-  window.location.href = URL.href;
-    } else if (ALT) {
- // Si el elemento tiene atributo alt (la imagen sin <a>)
-   window.location.href = 'https://latino.solo-latino.com/es/search?keyword=' + ALT;
+    // Evitamos que abra el enlace original en la computadora si no es un elemento "Head"
+    event.preventDefault();
+
+    
+    if (anchor) {
+     var URLs = anchor.href.replace('latino.solo-latino', 'h5.swplayer');   
+  window.location.href = URLs;
+       } else {
+        // Si por alguna razón el enlace no tiene texto (ej. botones vacíos), abrimos su href original
+ window.location.href = anchor.href;
     }
 };
+
 
 
           // INTENT
