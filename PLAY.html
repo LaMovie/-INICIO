@@ -1086,7 +1086,7 @@ function procesarEnlace(matchedItem) {
         if (!isMobile && ENLACE.includes("latino.solo")) {
             window.location.href = "https://sololatino.net/buscar?q=" + encodeURIComponent(tituloLimpio);
         } else if (NN.includes('🌐')) {
-            window.location.href = `${ENLACE}?texto=${encodeURIComponent(tituloLimpio)}`;
+   abrirFuera(`${ENLACE}?texto=${encodeURIComponent(tituloLimpio)}`);
         } else {
   window.location.href = ENLACE;
         }
@@ -1139,7 +1139,7 @@ function ejecutarBusqueda(valorInput) {
     }
 }
 
-// MANEJO REAL DEL ENTER 
+    // MANEJO REAL DEL ENTER 
 document.addEventListener("keydown", function(event) {
     if (event.target.matches("#buscador") && event.key === "Enter") {
         event.preventDefault();
@@ -1147,7 +1147,7 @@ document.addEventListener("keydown", function(event) {
     }
 });
 
-// MANEJO DEL CLICK 
+     // MANEJO DEL CLICK 
 document.addEventListener("click", function(event) {
     var matchedItem = event.target.closest("a"); 
     
@@ -1169,7 +1169,7 @@ document.addEventListener("click", function(event) {
     buscador.value = '';
 }
 
-// MANEJO DEL CLICK EN LA LUPA (#Search)
+   // MANEJO DEL CLICK EN LA LUPA (#Search)
 Search.onclick = () => {
     var valorInput = buscador.value.trim();
     if (valorInput !== "") {
@@ -1183,11 +1183,22 @@ Search.onclick = () => {
     }
 };
 
-No.onclick = () => {
-    Check();
+      No.onclick = () => {
+          Check();
 }
 
-// BUSCADORES
+       
+         // INTENT
+function abrirFuera(urlDestino) {
+     var urlSinProtocolo = urlDestino.replace("https://", "");
+      
+      var intentURL = "intent://" + urlSinProtocolo + "#Intent;scheme=https;action=android.intent.action.VIEW;end;";
+      
+ window.location.href = intentURL;
+    }
+       
+       
+        // BUSCADORES
 const S = [
     "https://lamovie.github.io/Buscador/Buscador.js",
     "https://lamovie.github.io/Buscador/Buscador2.js",
