@@ -733,10 +733,9 @@ var urlCapt = params.get('url');
 var N = params.get('titulo');
 
 var tituloCapt = N; 
-    var CC = ['google.com/file', 'play.vidyard', 'okpeliz.com'];
-    
-   if (urlCapt && !CC.some(c => urlCapt.includes(c))) {
-    tituloCapt = '🧋' + N;
+     
+     if (urlCapt && urlCapt.includes('dropbox')) {
+    tituloCapt = '🧋' + N; 
 }
 
 // 2. LÓGICA PRINCIPAL INTEGRADA AL CARGAR EL DOM
