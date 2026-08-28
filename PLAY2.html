@@ -1161,7 +1161,7 @@ function procesarEnlace(matchedItem) {
         if (!isMobile && ENLACE.includes("latino.solo")) {
             window.location.href = "https://sololatino.net/buscar?q=" + encodeURIComponent(tituloLimpio);
         } else if (NN.includes('🌐')) {
-   abrirFuera(`${ENLACE}?texto=${encodeURIComponent(tituloLimpio)}`);
+   window.location.href = `${ENLACE}?texto=${encodeURIComponent(tituloLimpio)}`;
         } else if (ENLACE.includes('pelisflix')) {
   window.location.href = `AUX.html?titulo=🍿${tituloLimpio}&url=${ENLACE}`;          
         } else {
