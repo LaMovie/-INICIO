@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 <style id="Escudo-Seguridad">
 body { display: none !important; }
@@ -11,6 +11,7 @@ body { display: none !important; }
         if (ESCUDO) ESCUDO.parentNode.removeChild(ESCUDO);
         } else {
        document.documentElement.innerHTML = "<head></head><body style='background:#000; margin:0;'><h1 style='color:#f19; text-align:center; padding-top:40vh; font-family: sans-serif;'>⛔ Acceso Denegado: No Se Admiten SAPOS Aquí!.</h1></body>";        
+       
         /* 2. Frenamos en seco la carga del resto de tu código */
         
      if (window.stop) {
@@ -139,7 +140,7 @@ background-size: 600% 600%;
 .filtro {
     display: none;
 }
-a {
+#Lista a {
     color: #fff;
     text-decoration: none;
   &:hover {
@@ -159,10 +160,10 @@ a {
 }
 
 .span {
-    color: #f29;
+    color: #f19;
 }
 .date {
-    color: #fa2;
+    color: #b3b3b3;
 }
 .dato{ 
     margin-top: 2vh;
@@ -464,7 +465,7 @@ footer {
     width: 6px;
 }
 #S::-webkit-scrollbar-thumb {
-    background: #f29; 
+    background: #f19; 
     border-radius: 10px;
 }
 #S::-webkit-scrollbar-track {
@@ -596,23 +597,22 @@ footer {
       
  <iframe class="I" id="I" src="" frameborder="0" allowfullscreen="true" allow="encrypted-media" allow="autoplay" name="WILLOW"></iframe>
 
-      <div id="Caja"></div>
-     
+     <div id="Caja"></div>
+ 
         <div class="dato">        
     <b><span class="span">Play</span></b> 
 <span class="date">Now</span><br />
       <b><span class="span">Titulo:</span></b> 
       <span id="T" class="date">Play</span><br />
           </div>      
-
-                        
-<div id="trailerModal">
+ 
+ <div id="trailerModal">
     <button class="cerrar-modal" onclick="cerrarTrailer()">❌</button>
     <div class="video-container">
         <iframe id="iframeTrailer" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 </div>
-
+                       
               <br/>
        <div id="Aux"></div> 
               <br/>
@@ -724,7 +724,7 @@ document.addEventListener('fullscreenchange', function() {
  }
 </script>
 <script>
-         // ⚠️ ATENCIÓN
+        // ⚠️ ATENCIÓN
 var API_KEY = "2c0b94c5ec729e2cc59b8be6ad7b2159"; 
 
 // 1. OBTENER PARÁMETROS GLOBALES
@@ -732,13 +732,15 @@ const params = new URLSearchParams(window.location.search);
 var urlCapt = params.get('url');
 var N = params.get('titulo');
 
-    var tituloCapt = N; 
+     var tituloCapt = N; 
      
     var CC = ['google.com/file', 'play.vidyard', 'okpeliz.com'];
     
    if (urlCapt && !CC.some(c => urlCapt.includes(c))) {
     tituloCapt = '🧋' + N;
 }
+
+ 
 
 // 2. LÓGICA PRINCIPAL INTEGRADA AL CARGAR EL DOM
 window.addEventListener('DOMContentLoaded', async () => {
@@ -813,31 +815,41 @@ if (scriptsCargados === S.length) {
                     
       var serie = listaBusqueda.find(item => (item.NAME || item.name) === tituloCapt);
 
-if (serie && serie.CAPS && Caja) {
-      Caja.innerHTML = ''; 
-        // Limpiar caja
-   var btnsCaps = [];
 
-                        serie.CAPS.forEach(capitulo => {
-    var boton = document.createElement('a');
+if (serie && serie.CAPS && Caja) {
+    Caja.innerHTML = ''; 
+    var btnsCaps = [];
+
+    // Agregamos 'index' para saber la posición del capítulo
+    
+    serie.CAPS.forEach((capitulo, index) => {
+        var boton = document.createElement('a');
  boton.textContent = capitulo.cap;
-   boton.className = 'Btn';
+        boton.className = 'Btn';
+
+        // CONDICIÓN: Si es el primer elemento (índice 0)
+        
+        if (index === 0) {
+ boton.style.background = '#4f9';
+ boton.style.color = '#000';
+ boton.style.boxShadow = '0 0 10px rgba(68, 255, 153, 0.8)';
+ }
                             
      boton.onclick = () => {
-          I.src = capitulo.link.replace('www.dropbox.com', 'dl.dropboxusercontent.com');
+            I.src = capitulo.link.replace('www.dropbox.com', 'dl.dropboxusercontent.com');
                                 
-    btnsCaps.forEach(other => {
+  btnsCaps.forEach(other => {
   other.style.background = 'blue';
   other.style.color = 'white';
   other.style.boxShadow = 'none';
- });
+});
   
-  boton.style.background = '#4f9';
-  boton.style.color = '#000';
-  boton.style.boxShadow = '0 0 10px rgba(68, 255, 153, 0.8)';
- };
+ boton.style.background = '#4f9';
+ boton.style.color = '#000';
+ boton.style.boxShadow = '0 0 10px rgba(68, 255, 153, 0.8)';
+  };
                             
-     Caja.appendChild(boton);
+        Caja.appendChild(boton);
         btnsCaps.push(boton);
      });
    }
@@ -865,6 +877,7 @@ if (serie && serie.CAPS && Caja) {
         var Aux = document.getElementById("Aux");
         try {
             var searchUrl = "https://api.themoviedb.org/3/search/movie?api_key=" + API_KEY + "&query=" + encodeURIComponent(N) + "&language=es-ES";
+
             var response = await fetch(searchUrl);
             var data = await response.json();
 
@@ -998,7 +1011,8 @@ var baseDePeliculas = [
             }
         } else { 
             if (!peli.esDrive) {
-                accionClick = `onclick="window.location.href='https://sololatino.net/buscar?q=${peli.titulo}'"`;
+  var ENLACE = peli.url.replace('latino.solo-latino', 'h5.swplayer');          
+                accionClick = `onclick="window.location.href='${ENLACE}'"`;
             } else {
                accionClick = `onclick="window.location.href='?titulo=${tituloCodificado}&url=${urlCodificada}'"`;
             }
@@ -1104,7 +1118,7 @@ function enviarReporte() {
             Swal.fire({
     title: '📜"¡Muchas Gracias! Tu Reporte Ha Sido Enviado Con Éxito."📜',  
     icon: 'info'
- }); 
+ });   
             cerrarModalReporte();
         } else {
             alert("🛠️...🛠️");
@@ -1202,6 +1216,7 @@ function procesarEnlace(matchedItem) {
     var NN = spanTitulo ? spanTitulo.textContent : matchedItem.textContent; // Toma solo el nombre, sin (Película)
     
     var isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
     var tituloLimpio = NN.replace(/🍿|🌐|📺|⚙️|🧋/g, '').trim();
 
     var CADENA = ['google.com/file', 'www.dropbox.com', 'play.vidyard', 'okpeliz.com'];
@@ -1210,13 +1225,14 @@ function procesarEnlace(matchedItem) {
         window.location.href = `PLAY.html?titulo=${encodeURIComponent(tituloLimpio)}&url=${encodeURIComponent(ENLACE)}`;
     } else {
         if (!isMobile && ENLACE.includes("latino.solo")) {
-            window.location.href = "https://sololatino.net/buscar?q=" + encodeURIComponent(tituloLimpio);
+     var ENLACE = ENLACE.replace('latino.solo-latino', 'h5.swplayer');
+   window.location.href = ENLACE;
         } else if (NN.includes('🌐')) {
-   window.location.href = `${ENLACE}?texto=${encodeURIComponent(tituloLimpio)}`;
+    window.location.href = `${ENLACE}?texto=${encodeURIComponent(tituloLimpio)}`;
         } else if (ENLACE.includes('pelisflix')) {
   window.location.href = `AUX.html?titulo=🍿${tituloLimpio}&url=${ENLACE}`;          
         } else {
-  window.location.href = ENLACE;
+   window.location.href = ENLACE;
         }
     }
     
@@ -1297,7 +1313,7 @@ document.addEventListener("click", function(event) {
     buscador.value = '';
 }
 
-   // MANEJO DEL CLICK EN LA LUPA (#Search)
+  // MANEJO DEL CLICK EN LA LUPA (#Search)
 Search.onclick = () => {
     var valorInput = buscador.value.trim();
     if (valorInput !== "") {
@@ -1311,19 +1327,19 @@ Search.onclick = () => {
     }
 };
 
-      No.onclick = () => {
-          Check();
+    No.onclick = () => {
+         Check();
 }
 
        
-         // INTENT
+          // INTENT
 function abrirFuera(urlDestino) {
      var urlSinProtocolo = urlDestino.replace("https://", "");
       
       var intentURL = "intent://" + urlSinProtocolo + "#Intent;scheme=https;action=android.intent.action.VIEW;end;";
       
  window.location.href = intentURL;
-    }
+}    
 </script>
 </body>
 </html>
