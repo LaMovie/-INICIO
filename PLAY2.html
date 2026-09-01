@@ -97,7 +97,7 @@ background-size: 600% 600%;
 #MG {
     width: 18%;
     opacity: .8;
-    filter: hue-rotate(645deg);
+    filter: hue-rotate(350deg);
 }
 #HH {
     color: gray;
@@ -177,10 +177,10 @@ a {
     text-shadow: 0px .1px 0 #001;
 }
 .span {
-    color: #7F05FF;
+    color: #f49536;
 }
 .date {
-    color: #b3bab3;
+    color: #b3b3b3;
 }
 .dato{ 
     margin-top: 2vh;
@@ -422,7 +422,7 @@ footer {
     width: 6px;
 }
 #S::-webkit-scrollbar-thumb {
-    background: #7F05FF; 
+    background: #f49536; 
     border-radius: 10px;
 }
 #S::-webkit-scrollbar-track {
@@ -552,10 +552,10 @@ footer {
 
  <iframe class="I" id="I" src="" frameborder="0" allowfullscreen="true" allow="encrypted-media" allow="autoplay" name="WILLOW"></iframe>
 
-      <B id="Emoj">°PLAY°</B> 
-      
-      <div id="Caja"></div>         
+      <B id="Emoj">°PLAY°</B>          
  
+     <div id="Caja"></div>
+     
         <div class="dato">        
     <b><span class="span">Play</span></b> 
 <span class="date">Now</span><br />
@@ -693,8 +693,8 @@ var urlCapt = params.get('url');
 var N = params.get('titulo');
 
    var tituloCapt = N; 
-    
-   if (urlCapt && urlCapt.includes('dropbox')) {
+   
+     if (urlCapt && urlCapt.includes('dropbox')) {
     tituloCapt = '🧋' + N;
 }
 
@@ -969,8 +969,7 @@ var baseDePeliculas = [
             }
         } else { 
             if (!peli.esDrive) {
-    var ENLACE = peli.url.replace('latino.solo-latino', 'h5.swplayer');          
-                accionClick = `onclick="window.location.href='${ENLACE}'"`;
+                accionClick = `onclick="window.location.href='https://sololatino.net/buscar?q=${peli.titulo}'"`;
             } else {
                accionClick = `onclick="window.location.href='?titulo=${tituloCodificado}&url=${urlCodificada}'"`;
             }
@@ -1182,14 +1181,13 @@ function procesarEnlace(matchedItem) {
         window.location.href = `PLAY2.html?titulo=${encodeURIComponent(tituloLimpio)}&url=${encodeURIComponent(ENLACE)}`;
     } else {
         if (!isMobile && ENLACE.includes("latino.solo")) {
-      var ENLACE = ENLACE.replace('latino.solo-latino', 'h5.swplayer');
-   window.location.href = ENLACE;
+            window.location.href = "https://sololatino.net/buscar?q=" + encodeURIComponent(tituloLimpio);
         } else if (NN.includes('🌐')) {
-    window.location.href = `${ENLACE}?texto=${encodeURIComponent(tituloLimpio)}`;
+   window.location.href = `${ENLACE}?texto=${encodeURIComponent(tituloLimpio)}`;
         } else if (ENLACE.includes('pelisflix')) {
   window.location.href = `AUX.html?titulo=🍿${tituloLimpio}&url=${ENLACE}`;          
         } else {
-   window.location.href = ENLACE;
+  window.location.href = ENLACE;
         }
     }
     
@@ -1270,7 +1268,7 @@ document.addEventListener("click", function(event) {
     buscador.value = '';
 }
 
-  // MANEJO DEL CLICK EN LA LUPA (#Search)
+   // MANEJO DEL CLICK EN LA LUPA (#Search)
 Search.onclick = () => {
     var valorInput = buscador.value.trim();
     if (valorInput !== "") {
@@ -1288,7 +1286,7 @@ Search.onclick = () => {
           Check();
 }
 
-        
+
           // INTENT
 function abrirFuera(urlDestino) {
      var urlSinProtocolo = urlDestino.replace("https://", "");
@@ -1300,7 +1298,5 @@ function abrirFuera(urlDestino) {
 </script>
 </body>
 </html>
-
-
 
 

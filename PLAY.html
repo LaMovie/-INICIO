@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
 <style id="Escudo-Seguridad">
 body { display: none !important; }
@@ -11,7 +11,6 @@ body { display: none !important; }
         if (ESCUDO) ESCUDO.parentNode.removeChild(ESCUDO);
         } else {
        document.documentElement.innerHTML = "<head></head><body style='background:#000; margin:0;'><h1 style='color:#f19; text-align:center; padding-top:40vh; font-family: sans-serif;'>⛔ Acceso Denegado: No Se Admiten SAPOS Aquí!.</h1></body>";        
-       
         /* 2. Frenamos en seco la carga del resto de tu código */
         
      if (window.stop) {
@@ -140,7 +139,7 @@ background-size: 600% 600%;
 .filtro {
     display: none;
 }
-#Lista a {
+a {
     color: #fff;
     text-decoration: none;
   &:hover {
@@ -160,10 +159,10 @@ background-size: 600% 600%;
 }
 
 .span {
-    color: #f19;
+    color: #f29;
 }
 .date {
-    color: #b3b3b3;
+    color: #fa2;
 }
 .dato{ 
     margin-top: 2vh;
@@ -465,7 +464,7 @@ footer {
     width: 6px;
 }
 #S::-webkit-scrollbar-thumb {
-    background: #f19; 
+    background: #f29; 
     border-radius: 10px;
 }
 #S::-webkit-scrollbar-track {
@@ -597,22 +596,23 @@ footer {
       
  <iframe class="I" id="I" src="" frameborder="0" allowfullscreen="true" allow="encrypted-media" allow="autoplay" name="WILLOW"></iframe>
 
-     <div id="Caja"></div>
- 
+      <div id="Caja"></div>
+     
         <div class="dato">        
     <b><span class="span">Play</span></b> 
 <span class="date">Now</span><br />
       <b><span class="span">Titulo:</span></b> 
       <span id="T" class="date">Play</span><br />
           </div>      
- 
- <div id="trailerModal">
+
+                        
+<div id="trailerModal">
     <button class="cerrar-modal" onclick="cerrarTrailer()">❌</button>
     <div class="video-container">
         <iframe id="iframeTrailer" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 </div>
-                       
+
               <br/>
        <div id="Aux"></div> 
               <br/>
@@ -724,7 +724,7 @@ document.addEventListener('fullscreenchange', function() {
  }
 </script>
 <script>
-        // ⚠️ ATENCIÓN
+         // ⚠️ ATENCIÓN
 var API_KEY = "2c0b94c5ec729e2cc59b8be6ad7b2159"; 
 
 // 1. OBTENER PARÁMETROS GLOBALES
@@ -732,15 +732,13 @@ const params = new URLSearchParams(window.location.search);
 var urlCapt = params.get('url');
 var N = params.get('titulo');
 
-     var tituloCapt = N; 
+    var tituloCapt = N; 
      
     var CC = ['google.com/file', 'play.vidyard', 'okpeliz.com'];
     
    if (urlCapt && !CC.some(c => urlCapt.includes(c))) {
     tituloCapt = '🧋' + N;
 }
-
- 
 
 // 2. LÓGICA PRINCIPAL INTEGRADA AL CARGAR EL DOM
 window.addEventListener('DOMContentLoaded', async () => {
@@ -877,7 +875,6 @@ if (serie && serie.CAPS && Caja) {
         var Aux = document.getElementById("Aux");
         try {
             var searchUrl = "https://api.themoviedb.org/3/search/movie?api_key=" + API_KEY + "&query=" + encodeURIComponent(N) + "&language=es-ES";
-
             var response = await fetch(searchUrl);
             var data = await response.json();
 
@@ -1011,8 +1008,7 @@ var baseDePeliculas = [
             }
         } else { 
             if (!peli.esDrive) {
-  var ENLACE = peli.url.replace('latino.solo-latino', 'h5.swplayer');          
-                accionClick = `onclick="window.location.href='${ENLACE}'"`;
+                accionClick = `onclick="window.location.href='https://sololatino.net/buscar?q=${peli.titulo}'"`;
             } else {
                accionClick = `onclick="window.location.href='?titulo=${tituloCodificado}&url=${urlCodificada}'"`;
             }
@@ -1118,7 +1114,7 @@ function enviarReporte() {
             Swal.fire({
     title: '📜"¡Muchas Gracias! Tu Reporte Ha Sido Enviado Con Éxito."📜',  
     icon: 'info'
- });   
+ }); 
             cerrarModalReporte();
         } else {
             alert("🛠️...🛠️");
@@ -1216,7 +1212,6 @@ function procesarEnlace(matchedItem) {
     var NN = spanTitulo ? spanTitulo.textContent : matchedItem.textContent; // Toma solo el nombre, sin (Película)
     
     var isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    
     var tituloLimpio = NN.replace(/🍿|🌐|📺|⚙️|🧋/g, '').trim();
 
     var CADENA = ['google.com/file', 'www.dropbox.com', 'play.vidyard', 'okpeliz.com'];
@@ -1225,14 +1220,13 @@ function procesarEnlace(matchedItem) {
         window.location.href = `PLAY.html?titulo=${encodeURIComponent(tituloLimpio)}&url=${encodeURIComponent(ENLACE)}`;
     } else {
         if (!isMobile && ENLACE.includes("latino.solo")) {
-     var ENLACE = ENLACE.replace('latino.solo-latino', 'h5.swplayer');
-   window.location.href = ENLACE;
+            window.location.href = "https://sololatino.net/buscar?q=" + encodeURIComponent(tituloLimpio);
         } else if (NN.includes('🌐')) {
-    window.location.href = `${ENLACE}?texto=${encodeURIComponent(tituloLimpio)}`;
+   window.location.href = `${ENLACE}?texto=${encodeURIComponent(tituloLimpio)}`;
         } else if (ENLACE.includes('pelisflix')) {
   window.location.href = `AUX.html?titulo=🍿${tituloLimpio}&url=${ENLACE}`;          
         } else {
-   window.location.href = ENLACE;
+  window.location.href = ENLACE;
         }
     }
     
@@ -1313,7 +1307,7 @@ document.addEventListener("click", function(event) {
     buscador.value = '';
 }
 
-  // MANEJO DEL CLICK EN LA LUPA (#Search)
+   // MANEJO DEL CLICK EN LA LUPA (#Search)
 Search.onclick = () => {
     var valorInput = buscador.value.trim();
     if (valorInput !== "") {
@@ -1327,19 +1321,19 @@ Search.onclick = () => {
     }
 };
 
-    No.onclick = () => {
-         Check();
+      No.onclick = () => {
+          Check();
 }
 
        
-          // INTENT
+         // INTENT
 function abrirFuera(urlDestino) {
      var urlSinProtocolo = urlDestino.replace("https://", "");
       
       var intentURL = "intent://" + urlSinProtocolo + "#Intent;scheme=https;action=android.intent.action.VIEW;end;";
       
  window.location.href = intentURL;
-}    
+    }
 </script>
 </body>
 </html>
