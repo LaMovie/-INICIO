@@ -197,7 +197,7 @@ document.addEventListener("click", function(event) {
 
 
 function openMovie(titulo, urlArchivo) {
-  const urlDestino = `PLAY2.html?titulo=${encodeURIComponent(titulo)};
+  const urlDestino = `PLAY2.html?titulo=${encodeURIComponent(titulo)}`;
    
   window.location.href = urlDestino;
 }
