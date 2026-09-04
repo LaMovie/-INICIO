@@ -2,7 +2,7 @@ var PELI  = ['file', 'movie', 'vidyard.com', 'dropbox', 'gallery=open', '.mp4'];
 var SERIE = ['folders', 'drama', 'publicfoldergrid'];
 
 function construirLista() {
-    var PELIS = [...Lista1, ...Lista2, ...Lista3];
+    var PELIS = [...Lista1, ...Lista2, ...Lista3]; 
     var lista = document.getElementById("Lista");
 
     PELIS.forEach(item => {
@@ -25,8 +25,13 @@ function construirLista() {
             tipo = 'Aux';
         }
 
-        a.href = item.URL || item.url;
-        // Envolvemos name en .titulo-txt para aislarlo en la búsqueda
+ // OCULTAMOS LA URL REAL DEL HREF
+        a.href = "javascript:void(0);"; 
+        
+        // PASAMOS LAS VARIABLES AL DOM PARA LEERLAS DESPUÉS
+        a.dataset.tipo = tipo;
+        a.dataset.url = url;
+
         a.innerHTML = `<span class="titulo-txt">${name}</span> <span style="font-size: 11px; color: #f19; font-weight: normal; margin-left: 8px;"><br/>(${tipo})</span>`;
         a.classList.add("Data");
 
@@ -34,6 +39,7 @@ function construirLista() {
         lista.appendChild(li);
     });
 }
+
 
 document.addEventListener("keyup", e => {
     function Tildes(texto, preservarÑ = false) {
@@ -73,32 +79,32 @@ document.addEventListener("keyup", e => {
 function procesarEnlace(matchedItem) {
     if (!matchedItem) return;
 
-    var ENLACE = matchedItem.getAttribute("href") || matchedItem.href;
     var spanTitulo = matchedItem.querySelector(".titulo-txt");
-    var NN = spanTitulo ? spanTitulo.textContent : matchedItem.textContent; // Toma solo el nombre, sin (Película)
+    var NN = spanTitulo ? spanTitulo.textContent : matchedItem.textContent;
+    var tituloLimpio = NN.replace(/🍿|🌐|📺|⚙️|🧋/g, '').trim();
     
     var isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    var tituloLimpio = NN.replace(/🍿|🌐|📺|⚙️|🧋/g, '').trim();
-
-    var CADENA = ['google.com/file', 'www.dropbox.com', 'play.vidyard', 'okpeliz.com'];
     
-    if (CADENA.some(dominio => ENLACE.includes(dominio))) {
-        window.location.href = `PLAY.html?titulo=${encodeURIComponent(tituloLimpio)}&url=${encodeURIComponent(ENLACE)}`;
-    } else if (isMobile && ENLACE.includes('mp4')) {
-   window.location.href = ENLACE;
-        
-    } else if (!isMobile && ENLACE.includes('mp4')) {
-  window.location.href = `PLAY.html?titulo=${encodeURIComponent(tituloLimpio)}&url=${encodeURIComponent(ENLACE)}`;        
+    var EXE = ['movie', 'pcloud', 'share.vidyard'];
+
+    // RECUPERAMOS EL 'tipo' Y 'url' OCULTOS EN EL ELEMENTO
+    var tipo = matchedItem.dataset.tipo;
+    var url = matchedItem.dataset.url;
+
+    // REDIRECCIÓN SIMPLIFICADA BASADA EN EL TIPO
+    if (tipo === 'Copy') {
+        window.location.href = `${url}?texto=${tituloLimpio}`;
+  } else if (tipo === 'Película' && !EXE.some(s => url.includes(s))) { 
+        window.location.href = `PLAY.html?titulo=${encodeURIComponent(tituloLimpio)}`;
+    } else if (tipo === 'Aux') {
+        window.location.href = `AUX.html?titulo=${encodeURIComponent(NN)}`;
+    } else if (NN.includes('🧋')) {
+        window.location.href = `PLAY.html?titulo=${encodeURIComponent(NN)}`;
     } else {
-        if (!isMobile && ENLACE.includes("latino.solo")) {
- var ENLACE = ENLACE.replace('latino.solo-latino', 'h5.swplayer');     
-   window.location.href = ENLACE;
-        } else if (NN.includes('🌐')) {
-    window.location.href = `${ENLACE}?texto=${encodeURIComponent(tituloLimpio)}`;
-        } else if (ENLACE.includes('pelisflix')) {
-  window.location.href = `AUX.html?titulo=${NN}&url=${ENLACE}`;          
+        if (isMobile) {
+      window.location.href = url;
         } else {
-  window.location.href = ENLACE;
+   window.location.href = url.replace('latino.solo-latino', 'h5.swplayer');
         }
     }
     
@@ -191,7 +197,7 @@ function Check() {
 
 
 function openMovie(titulo, urlArchivo) {
-  const urlDestino = `PLAY2.html?titulo=${encodeURIComponent(titulo)}&url=${encodeURIComponent(urlArchivo)}`;
+  const urlDestino = `PLAY2.html?titulo=${encodeURIComponent(titulo)};
    
   window.location.href = urlDestino;
 }
