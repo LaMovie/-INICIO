@@ -114,6 +114,7 @@ function procesarEnlace(matchedItem) {
     }
 }
 
+
 // NUEVA FUNCIÓN PARA EJECUTAR LA BÚSQUEDA (COMPARTIDA POR ENTER Y LUPA)
 function ejecutarBusqueda(valorInput) {
     var In = valorInput.toLowerCase().trim();
@@ -163,20 +164,19 @@ document.addEventListener("keydown", function(event) {
     }
 });
 
-// MANEJO DEL CLICK 
+     
+     // MANEJO DEL CLICK 
 document.addEventListener("click", function(event) {
     var matchedItem = event.target.closest("a"); 
     
     if (matchedItem && matchedItem.classList.contains("Data")) {
-        var href = matchedItem.getAttribute("href");
-        if (href && href !== "#") {
-            event.preventDefault();
-            procesarEnlace(matchedItem);
-        }
+        event.preventDefault();
+        procesarEnlace(matchedItem);
     }
 });
 
-function Check() {
+
+   function Check() {
     var isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);   
     const urlDestino = `${'GOOGLE.html'}?texto=${buscador.value}`;
     var domain = isMobile ? urlDestino : 'https://www.google.com/search?q=site:sololatino.net+' + encodeURIComponent(buscador.value);
