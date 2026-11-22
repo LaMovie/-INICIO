@@ -2,7 +2,7 @@ var PELI  = ['file', 'movie', 'vidyard.com', 'dropbox', 'gallery=open', '.mp4'];
 var SERIE = ['folders', 'drama', 'publicfoldergrid'];
 
 function construirLista() {
-    var PELIS = [...TERROR, ...ACCION, ...FICCION, ...COMEDY, ...SERIES, ...ANIME, ...TV, ...PRE];
+    var PELIS = [...TERROR, ...ACCION, ...FICCION, ...COMEDY, ...SERIES, ...ANIME, ...TV];
      
     var lista = document.getElementById("Lista");
 
@@ -429,8 +429,7 @@ document.addEventListener('fullscreenchange', function() {
     "https://lamovie.github.io/Buscador/GENEROS/COMEDY.js", 
     "https://lamovie.github.io/Buscador/GENEROS/SERIES.js", 
     "https://lamovie.github.io/Buscador/GENEROS/ANIME.js", 
-    "https://lamovie.github.io/Buscador/GENEROS/TV.js", 
-    "https://lamovie.github.io/Buscador/GENEROS/PRE.js"
+    "https://lamovie.github.io/Buscador/GENEROS/TV.js"
 ];
 
   let scriptsCargados = 0;
